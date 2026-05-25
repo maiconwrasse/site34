@@ -56,7 +56,7 @@ window.addEventListener('scroll', () => {
 /* ── SCROLL REVEAL ── */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 /* ── CARD TILT 3D (cards do Sobre) ── */
@@ -70,21 +70,34 @@ document.querySelectorAll('.card-unit').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-/* ── SERVICE BLOCK: iluminação dinâmica ao hover ── */
+/* ── WA CARDS: iluminação dinâmica ao hover ── */
+document.querySelectorAll('.wa-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width)  * 100;
+    const y = ((e.clientY - r.top)  / r.height) * 100;
+    const glow = card.querySelector('.wa-card__glow');
+    if (glow) {
+      glow.style.background =
+        `radial-gradient(circle at ${x}% ${y}%, ${
+          card.classList.contains('wa-card--blue')
+            ? 'rgba(65,121,196,.25)'
+            : 'rgba(249,100,11,.22)'
+        } 0%, transparent 65%)`;
+    }
+  });
+});
+
+/* ── SERVICE BLOCK: iluminação dinâmica ── */
 document.querySelectorAll('.srv-block').forEach(block => {
   block.addEventListener('mousemove', e => {
     const r = block.getBoundingClientRect();
     const x = ((e.clientX - r.left) / r.width)  * 100;
     const y = ((e.clientY - r.top)  / r.height) * 100;
-    block.style.setProperty('--mx', `${x}%`);
-    block.style.setProperty('--my', `${y}%`);
     block.style.backgroundImage =
-      `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.025) 0%, transparent 60%),
-       linear-gradient(transparent, transparent)`;
+      `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.022) 0%, transparent 55%)`;
   });
-  block.addEventListener('mouseleave', () => {
-    block.style.backgroundImage = '';
-  });
+  block.addEventListener('mouseleave', () => { block.style.backgroundImage = ''; });
 });
 
 /* ── SMOOTH ANCHORS ── */
