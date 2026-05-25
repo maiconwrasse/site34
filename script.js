@@ -107,3 +107,37 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+
+/* ── POP-UP DIA DOS NAMORADOS ── */
+(function () {
+  const overlay  = document.getElementById('popup-overlay');
+  const btnClose = document.getElementById('popup-close');
+  const btnDismiss = document.getElementById('popup-dismiss');
+
+  if (!overlay) return;
+
+  function openPopup() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Abrir após 1.8s do carregamento
+  setTimeout(openPopup, 1800);
+
+  btnClose.addEventListener('click', closePopup);
+  btnDismiss.addEventListener('click', closePopup);
+
+  // Fechar ao clicar fora do card
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closePopup();
+  });
+
+  // Fechar com Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup();
+  });
+})();
