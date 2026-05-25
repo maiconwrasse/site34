@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complexo 34 — Um Complexo de Possibilidades</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="#inicio" class="navbar__logo" aria-label="Complexo 34">
+    <img src="logo_complexo_34.svg" alt="Complexo 34" />
+  </a>
+  <ul class="navbar__links">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#inicio"  onclick="closeMenu()">Início</a>
+  <a href="#sobre"   onclick="closeMenu()">Sobre</a>
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#contato" onclick="closeMenu()">Contato</a>
+</div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero__video-wrap">
+    <video class="hero__video" autoplay muted loop playsinline preload="auto">
+      <source src="C34_video_hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__vignette"></div>
+  <div class="hero__glow-l"></div>
+  <div class="hero__glow-r"></div>
+  <div class="hero__grain"></div>
+  <div class="hero__content">
+    <p class="hero__label">Bem-vindo ao</p>
+    <h1 class="hero__title">Complexo 34</h1>
+    <div class="hero__divider"></div>
+    <p class="hero__subtitle">Um complexo de possibilidades.</p>
+    <p class="hero__tagline">Posto&nbsp;·&nbsp;Restaurante&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;Experiência</p>
+    <div class="hero__cta">
+      <a href="#sobre"    class="btn btn--primary">Explorar Complexo</a>
+      <a href="#servicos" class="btn btn--glass">Nossos Serviços</a>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <div class="scroll-line"></div>
+    <span>Rolar</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SOBRE ═══════════════════════════════ -->
+<section class="sobre" id="sobre">
+  <div class="sobre__glow"></div>
+  <div class="container">
+    <div class="sec-label reveal">Quem somos</div>
+    <h2 class="sobre__title reveal">
+      Um complexo pensado para transformar<br />
+      <span class="accent">cada parada em experiência.</span>
+    </h2>
+    <p class="sobre__sub reveal">
+      Na BR-386, o Complexo 34 reúne tudo que motoristas e famílias precisam —
+      com qualidade, conforto e atendimento de verdade.
+    </p>
+
+    <div class="cards-grid">
+      <div class="card-unit reveal" data-delay="0">
+        <div class="card-unit__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8l4-4h10l4 4v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <div class="card-unit__name">Restaurante</div>
+        <div class="card-unit__desc">Buffet completo, café da manhã e à la carte.</div>
+        <div class="card-unit__bar card-unit__bar--blue"></div>
+      </div>
+      <div class="card-unit reveal" data-delay="1">
+        <div class="card-unit__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17h1m16 0h1M5 17V7a2 2 0 012-2h10a2 2 0 012 2v10"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+        </div>
+        <div class="card-unit__name">Posto Ipiranga</div>
+        <div class="card-unit__desc">Combustíveis de alta qualidade e troca de óleo.</div>
+        <div class="card-unit__bar card-unit__bar--orange"></div>
+      </div>
+      <div class="card-unit reveal" data-delay="2">
+        <div class="card-unit__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="8" rx="4" ry="6"/><path d="M8 14c0 3 1.5 6 4 6s4-3 4-6"/><path d="M6 20h12"/></svg>
+        </div>
+        <div class="card-unit__name">Ultragaz</div>
+        <div class="card-unit__desc">P13, P20 e P45 com entrega ágil e segura.</div>
+        <div class="card-unit__bar card-unit__bar--orange"></div>
+      </div>
+      <div class="card-unit reveal" data-delay="3">
+        <div class="card-unit__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+        </div>
+        <div class="card-unit__name">Murilo Pneus</div>
+        <div class="card-unit__desc">Pneus, alinhamento, balanceamento e manutenção.</div>
+        <div class="card-unit__bar card-unit__bar--blue"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SERVIÇOS ═══════════════════════════════ -->
+<section class="servicos" id="servicos">
+  <div class="servicos__ambient-l"></div>
+  <div class="servicos__ambient-r"></div>
+  <div class="container">
+
+    <div class="sec-label sec-label--center reveal">Fale conosco</div>
+    <h2 class="servicos__title reveal">Escolha um serviço</h2>
+    <p class="servicos__sub reveal">Toque para conversar direto no WhatsApp</p>
+
+    <!-- RESTAURANTE -->
+    <div class="srv-block srv-block--blue reveal">
+      <div class="srv-block__img-wrap">
+        <img src="restaurante_34.jpg" alt="Restaurante" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--blue">Gastronomia</div>
+        <h3 class="srv-block__name">Restaurante</h3>
+        <p class="srv-block__desc">Buffet · Café da Manhã · À La Carte · Ambiente Noturno</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- POSTO -->
+    <div class="srv-block srv-block--orange srv-block--reverse reveal">
+      <div class="srv-block__img-wrap">
+        <img src="posto_34.jpg" alt="Posto Ipiranga" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--orange">Combustíveis · Ipiranga</div>
+        <h3 class="srv-block__name">Posto Complexo 34</h3>
+        <p class="srv-block__desc">Gasolina Comum · Ipimax · Ipimax PRO · Diesel S10 · Troca de Óleo</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- GÁS -->
+    <div class="srv-block srv-block--orange reveal">
+      <div class="srv-block__img-wrap">
+        <img src="gas_34.jpg" alt="Ultragaz" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--orange">Distribuidora · Ultragaz</div>
+        <h3 class="srv-block__name">Gás Ultragaz</h3>
+        <p class="srv-block__desc">P13 Residencial · P20 Comercial · P45 Industrial</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange srv-block__btn--pulse">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Pedir Gás agora
+        </a>
+      </div>
+    </div>
+
+    <!-- MURILO PNEUS -->
+    <div class="srv-block srv-block--blue srv-block--reverse reveal">
+      <div class="srv-block__img-wrap">
+        <img src="murilo_34.jpg" alt="Murilo Pneus" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--blue">Auto Center</div>
+        <h3 class="srv-block__name">Murilo Pneus</h3>
+        <p class="srv-block__desc">Pneus · Alinhamento · Balanceamento · Manutenção</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTATO ═══════════════════════════════ -->
+<section class="contato" id="contato">
+  <div class="contato__glow"></div>
+  <div class="container contato__inner">
+    <div class="sec-label reveal">Contato direto</div>
+    <h2 class="contato__title reveal">Estamos aqui<br /><span class="accent">para você.</span></h2>
+    <p class="contato__sub reveal">BR-386 · Complexo 34 · Atendimento todos os dias</p>
+    <a href="https://wa.me/5555996910733"
+       target="_blank" rel="noopener"
+       class="contato__wa reveal">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+      (55) 99691-0733
+    </a>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
