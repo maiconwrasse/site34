@@ -643,6 +643,164 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .popup__dismiss:hover { color: rgba(26,10,14,.70); }
 
 /* ═══════════════════════════════════════════════════════════
+   LÉ-VI COMIDAS SAUDÁVEIS
+═══════════════════════════════════════════════════════════ */
+:root {
+  --green:      #4a9a47;
+  --green-glow: rgba(74,154,71,0.35);
+}
+
+.levi {
+  position: relative;
+  padding: 130px 0 120px;
+  background: var(--black-95);
+  overflow: hidden;
+}
+.levi__ambient-l {
+  position: absolute; top: -80px; left: -120px;
+  width: 550px; height: 550px;
+  background: radial-gradient(circle, rgba(74,154,71,.07) 0%, transparent 68%);
+  pointer-events: none;
+}
+.levi__ambient-r {
+  position: absolute; bottom: -80px; right: -100px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(74,154,71,.05) 0%, transparent 68%);
+  pointer-events: none;
+}
+.levi__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Logo */
+.levi__logo-wrap { margin-bottom: 22px; }
+.levi__logo { height: 52px; width: auto; display: block; filter: brightness(0) invert(1); }
+
+/* Texto */
+.sec-label--green { color: var(--green); }
+.accent--green    { color: var(--green); }
+
+.levi__title {
+  font-family: var(--fd);
+  font-size: clamp(44px,5.5vw,80px);
+  line-height: .90; letter-spacing: .02em;
+  color: var(--white);
+  margin-bottom: 22px;
+}
+.levi__desc {
+  font-family: var(--fu); font-size: 15px; font-weight: 300;
+  line-height: 1.78; color: var(--w80);
+  margin-bottom: 28px; max-width: 440px;
+}
+.levi__features {
+  list-style: none;
+  margin-bottom: 44px;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.levi__features li {
+  font-family: var(--fu); font-size: 14px; font-weight: 400;
+  color: var(--w80); letter-spacing: .02em; line-height: 1.5;
+}
+
+/* Botão */
+.levi__btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--fu); font-size: 11px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  text-decoration: none; padding: 15px 32px;
+  border-radius: 2px;
+  background: rgba(74,154,71,.14);
+  color: var(--white);
+  border: 1px solid rgba(74,154,71,.38);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  position: relative; overflow: hidden;
+}
+.levi__btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.06); opacity: 0; transition: opacity .3s; }
+.levi__btn:hover::before { opacity: 1; }
+.levi__btn:hover { transform: translateY(-2px); border-color: rgba(74,154,71,.65); box-shadow: 0 12px 40px rgba(74,154,71,.20); }
+.levi__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Coluna imagem */
+.levi__img-col { position: relative; }
+.levi__img-wrap {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.levi__img-wrap img {
+  width: 100%; height: auto;
+  display: block;
+  transition: transform 1s cubic-bezier(.4,0,.2,1);
+  border-radius: 6px;
+}
+.levi__img-wrap:hover img { transform: scale(1.03); }
+.levi__img-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(74,154,71,.15) 0%, transparent 65%);
+  pointer-events: none; border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RODAPÉ
+═══════════════════════════════════════════════════════════ */
+.footer {
+  background: #030303;
+  border-top: 1px solid var(--border);
+}
+.footer__top { padding: 72px 0 64px; }
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+/* Marca */
+.footer__brand {}
+.footer__logo {
+  height: 40px; width: auto;
+  filter: brightness(0) invert(1);
+  opacity: .85;
+  margin-bottom: 18px; display: block;
+}
+.footer__tagline {
+  font-family: var(--fu); font-size: 12px; font-weight: 300;
+  line-height: 1.75; color: var(--w30);
+  letter-spacing: .04em;
+}
+
+/* Colunas */
+.footer__col { display: flex; flex-direction: column; gap: 10px; }
+.footer__col-title {
+  font-family: var(--fu); font-size: 9px; font-weight: 700;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: var(--w30); margin-bottom: 6px;
+}
+.footer__col a, .footer__col span {
+  font-family: var(--fu); font-size: 13px; font-weight: 300;
+  color: var(--w50); text-decoration: none; letter-spacing: .02em;
+  transition: color .25s;
+}
+.footer__col a:hover { color: var(--white); }
+
+/* Bottom bar */
+.footer__bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+}
+.footer__bottom-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.footer__bottom-inner span {
+  font-family: var(--fu); font-size: 11px; font-weight: 300;
+  color: var(--w30); letter-spacing: .06em;
+}
+.footer__credits { color: var(--w30); }
+
+/* ═══════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 960px) {
@@ -655,6 +813,10 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .namorados__img-wrap { aspect-ratio: 16/9; max-width: 560px; }
   .popup { grid-template-columns: 1fr; max-width: 380px; }
   .popup__img-wrap { display: none; }
+  .levi__inner { grid-template-columns: 1fr; gap: 48px; }
+  .levi__img-col { order: -1; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer__brand { grid-column: 1 / -1; }
 }
 @media (max-width: 768px) {
   .navbar { padding: 0 24px; }
@@ -662,10 +824,12 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .hamburger { display: flex; }
   .hero__title  { font-size: clamp(64px,16vw,96px); white-space: normal; }
   .hero__logo   { width: clamp(180px, 60vw, 320px); }
+  /* Fix vídeo mobile: evita que iOS bloqueie autoplay */
+  .hero__video  { object-position: center center; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
-  .sobre, .servicos, .contato, .links-rapidos, .namorados { padding: 90px 0; }
+  .sobre, .servicos, .contato, .links-rapidos, .namorados, .levi { padding: 90px 0; }
   .sobre__sub  { margin-bottom: 48px; }
   .cards-grid  { grid-template-columns: 1fr; }
   .wa-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -678,6 +842,9 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .contato__wa { padding: 18px 28px; font-size: clamp(20px,5vw,28px); }
   .namorados__btn { width: 100%; justify-content: center; }
   .popup__body { padding: 28px 24px 24px; }
+  .levi__btn   { width: 100%; justify-content: center; }
+  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer__bottom-inner { flex-direction: column; text-align: center; }
 }
 @media (max-width: 420px) {
   .wa-grid { grid-template-columns: 1fr; }

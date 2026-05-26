@@ -8,6 +8,29 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
+/* ── FIX VÍDEO MOBILE (iOS / Android) ── */
+(function () {
+  const video = document.querySelector('.hero__video');
+  if (!video) return;
+  // Garante atributos obrigatórios para autoplay no iOS
+  video.setAttribute('playsinline', '');
+  video.setAttribute('muted', '');
+  video.muted = true;
+  const tryPlay = () => {
+    const p = video.play();
+    if (p !== undefined) {
+      p.catch(() => {
+        // Se bloqueado, tenta novamente no primeiro toque/scroll
+        const unlock = () => { video.play(); document.removeEventListener('touchstart', unlock); window.removeEventListener('scroll', unlock); };
+        document.addEventListener('touchstart', unlock, { once: true });
+        window.addEventListener('scroll', unlock, { once: true, passive: true });
+      });
+    }
+  };
+  if (document.readyState === 'complete') { tryPlay(); }
+  else { window.addEventListener('load', tryPlay, { once: true }); }
+})();
+
 /* ── HAMBURGER / MENU MOBILE ── */
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
