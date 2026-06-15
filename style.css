@@ -338,6 +338,9 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .sobre__title { font-family: var(--fd); font-size: clamp(44px,6vw,80px); line-height: .94; letter-spacing: .02em; color: var(--white); margin-bottom: 24px; max-width: 820px; }
 .sobre__sub   { font-family: var(--fu); font-size: 15px; font-weight: 300; line-height: 1.75; color: var(--w80); margin-bottom: 72px; max-width: 620px; }
 
+/* Bloco "Como chegar" integrado ao Quem somos */
+.sobre__chegar { border-top: 1px solid var(--border); padding-top: 56px; }
+
 .cards-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
 .card-unit {
   position: relative; background: var(--w05); border: 1px solid var(--border);
@@ -458,12 +461,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 /* ═══════════════════════════════════════════════════════════
    COMO CHEGAR
 ═══════════════════════════════════════════════════════════ */
-.como-chegar {
-  position: relative;
-  padding: 120px 0 130px;
-  background: var(--black-90);
-  overflow: hidden;
-}
+/* Como chegar — agora integrado à seção Sobre (.sobre__chegar) */
 .como-chegar__title {
   font-family: var(--fd);
   font-size: clamp(52px,7vw,96px);
@@ -516,22 +514,22 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .como-chegar__btn:hover { transform: translateY(-2px); border-color: rgba(249,100,11,.60); box-shadow: 0 10px 36px rgba(249,100,11,.22); }
 
 /* ═══════════════════════════════════════════════════════════
-   DIA DOS NAMORADOS — SEÇÃO
+   OFERTA GÁS ULTRAGAZ — SEÇÃO
 ═══════════════════════════════════════════════════════════ */
-.namorados {
+.oferta {
   position: relative;
   padding: 130px 0 120px;
-  background: #fdf2f4;
+  background: #fff7f1;
   overflow: hidden;
 }
-.namorados__ambient {
+.oferta__ambient {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(232,137,154,.22) 0%, transparent 55%),
-    radial-gradient(ellipse at 15% 90%, rgba(232,137,154,.15) 0%, transparent 50%);
+    radial-gradient(ellipse at 80% 20%, rgba(249,100,11,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 90%, rgba(249,100,11,.12) 0%, transparent 50%);
   pointer-events: none;
 }
-.namorados__inner {
+.oferta__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
@@ -539,86 +537,67 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 }
 
 /* Coluna da imagem */
-.namorados__img-col { position: relative; }
-.namorados__img-wrap {
+.oferta__img-col { position: relative; }
+.oferta__img-wrap {
   position: relative;
   border-radius: 6px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  box-shadow: 0 32px 80px rgba(180,60,90,.20);
+  box-shadow: 0 32px 80px rgba(200,90,20,.22);
 }
-.namorados__img-wrap img {
+.oferta__img-wrap img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
   display: block;
   transition: transform 1s cubic-bezier(.4,0,.2,1);
-  filter: brightness(.97) saturate(1.08);
 }
-.namorados__img-wrap:hover img { transform: scale(1.04); }
-.namorados__img-badge {
-  position: absolute; top: 22px; right: 22px;
-  width: 64px; height: 64px;
-  background: #e8899a;
-  border-radius: 50%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  box-shadow: 0 6px 24px rgba(180,60,90,.30);
-  color: #fff;
-  font-family: var(--fd);
-  font-size: 26px; line-height: 1;
-  letter-spacing: .04em;
-}
-.namorados__img-badge-sub {
-  font-family: var(--fu); font-size: 9px; font-weight: 600;
-  letter-spacing: .22em; text-transform: uppercase;
-  line-height: 1; margin-top: 1px;
-}
+.oferta__img-wrap:hover img { transform: scale(1.04); }
 
 /* Coluna do conteúdo */
-.namorados__body { display: flex; flex-direction: column; align-items: flex-start; }
+.oferta__body { display: flex; flex-direction: column; align-items: flex-start; }
 
-.sec-label--pink { color: #c44f6e; }
-.accent--pink    { color: #c44f6e; }
+.sec-label--orange { color: var(--orange); }
+.accent--orange    { color: var(--orange); }
 
-.namorados__title {
+.oferta__title {
   font-family: var(--fd);
   font-size: clamp(52px,6.5vw,92px);
   line-height: .90; letter-spacing: .02em;
-  color: #1a0a0e;
+  color: #1a0d05;
   margin-bottom: 24px;
 }
-.namorados__desc {
+.oferta__desc {
   font-family: var(--fu); font-size: 15px; font-weight: 300;
-  line-height: 1.78; color: rgba(26,10,14,.65);
-  margin-bottom: 32px; max-width: 420px;
+  line-height: 1.78; color: rgba(26,13,5,.66);
+  margin-bottom: 32px; max-width: 440px;
 }
-.namorados__features {
+.oferta__features {
   list-style: none;
   margin-bottom: 44px;
   display: flex; flex-direction: column; gap: 12px;
 }
-.namorados__features li {
+.oferta__features li {
   font-family: var(--fu); font-size: 14px; font-weight: 400;
-  color: rgba(26,10,14,.75); letter-spacing: .02em;
+  color: rgba(26,13,5,.78); letter-spacing: .02em;
   line-height: 1.5;
 }
-.namorados__btn {
+.oferta__btn {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--fu); font-size: 11px; font-weight: 600;
   letter-spacing: .18em; text-transform: uppercase;
   text-decoration: none; padding: 15px 32px;
   border-radius: 3px;
-  background: #c44f6e;
+  background: var(--orange);
   color: #fff;
-  border: 1px solid #c44f6e;
-  box-shadow: 0 8px 32px rgba(196,79,110,.28);
+  border: 1px solid var(--orange);
+  box-shadow: 0 8px 32px rgba(249,100,11,.28);
   transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
   position: relative; overflow: hidden;
 }
-.namorados__btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.08); opacity: 0; transition: opacity .3s; }
-.namorados__btn:hover::before { opacity: 1; }
-.namorados__btn:hover { transform: translateY(-2px); box-shadow: 0 14px 48px rgba(196,79,110,.40); }
-.namorados__btn svg { width: 17px; height: 17px; flex-shrink: 0; fill: #fff; }
+.oferta__btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,.10); opacity: 0; transition: opacity .3s; }
+.oferta__btn:hover::before { opacity: 1; }
+.oferta__btn:hover { transform: translateY(-2px); box-shadow: 0 14px 48px rgba(249,100,11,.42); }
+.oferta__btn svg { width: 17px; height: 17px; flex-shrink: 0; fill: #fff; }
 
 /* ═══════════════════════════════════════════════════════════
    POP-UP DIA DOS NAMORADOS
@@ -639,14 +618,13 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 
 .popup {
   position: relative;
-  background: #fff;
-  border-radius: 8px;
+  background: #0c0c0c;
+  border-radius: 10px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  max-width: 680px; width: 100%;
-  max-height: 90vh;
-  box-shadow: 0 40px 120px rgba(0,0,0,.55);
+  display: flex; flex-direction: column;
+  max-width: 400px; width: 100%;
+  max-height: 92vh;
+  box-shadow: 0 40px 120px rgba(0,0,0,.60), 0 0 0 1px rgba(249,100,11,.18);
   transform: translateY(28px) scale(.97);
   transition: transform .5s cubic-bezier(.4,0,.2,1);
 }
@@ -658,71 +636,52 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .popup__close {
   position: absolute; top: 14px; right: 14px; z-index: 10;
   width: 32px; height: 32px;
-  background: rgba(255,255,255,.90); border: none; cursor: pointer;
+  background: rgba(0,0,0,.45); border: none; cursor: pointer;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: #333; transition: background .2s, transform .2s;
+  color: #fff; transition: background .2s, transform .2s;
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
 }
-.popup__close:hover { background: #fff; transform: scale(1.10); }
+.popup__close:hover { background: rgba(0,0,0,.72); transform: scale(1.10); }
 .popup__close svg { width: 15px; height: 15px; }
 
-/* Imagem */
-.popup__img-wrap {
-  position: relative; overflow: hidden;
+/* Creative (imagem da promoção) */
+.popup__creative {
+  display: flex; justify-content: center;
+  background: #0c0c0c; line-height: 0;
 }
-.popup__img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center; display: block;
-}
-.popup__img-ov {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(180,40,80,.45) 100%);
+.popup__creative img {
+  display: block; width: 100%; height: auto;
+  max-height: 72vh; object-fit: contain;
 }
 
-/* Body */
-.popup__body {
-  padding: 40px 36px 36px;
-  background: #fdf2f4;
-  display: flex; flex-direction: column; align-items: flex-start;
-  justify-content: center;
-}
-.popup__tag {
-  font-family: var(--fu); font-size: 9px; font-weight: 700;
-  letter-spacing: .34em; text-transform: uppercase;
-  color: #c44f6e; margin-bottom: 12px;
-}
-.popup__title {
-  font-family: var(--fd);
-  font-size: clamp(38px,5vw,56px);
-  line-height: .88; letter-spacing: .03em;
-  color: #1a0a0e; margin-bottom: 14px;
-}
-.popup__sub {
-  font-family: var(--fu); font-size: 13px; font-weight: 300;
-  line-height: 1.72; color: rgba(26,10,14,.65);
-  margin-bottom: 28px;
+/* Ações */
+.popup__actions {
+  padding: 16px 18px 18px;
+  background: #0c0c0c;
+  display: flex; flex-direction: column; align-items: stretch; gap: 10px;
 }
 .popup__btn {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--fu); font-size: 10px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--fu); font-size: 11px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
-  text-decoration: none; padding: 13px 26px;
-  border-radius: 3px; background: #c44f6e; color: #fff;
-  border: 1px solid #c44f6e;
-  box-shadow: 0 6px 24px rgba(196,79,110,.28);
-  margin-bottom: 14px; width: 100%; justify-content: center;
+  text-decoration: none; padding: 14px 26px;
+  border-radius: 4px; background: var(--orange); color: #fff;
+  border: 1px solid var(--orange);
+  box-shadow: 0 6px 24px rgba(249,100,11,.30);
+  width: 100%;
   transition: transform .3s, box-shadow .3s;
 }
-.popup__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(196,79,110,.38); }
-.popup__btn svg { width: 15px; height: 15px; flex-shrink: 0; fill: #fff; }
+.popup__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(249,100,11,.42); }
+.popup__btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 .popup__dismiss {
   background: none; border: none; cursor: pointer;
-  font-family: var(--fu); font-size: 10px; font-weight: 400;
+  font-family: var(--fu); font-size: 10px; font-weight: 500;
   letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(26,10,14,.40); width: 100%; text-align: center;
+  color: rgba(255,255,255,.45); width: 100%; text-align: center;
   transition: color .2s; padding: 4px 0;
 }
-.popup__dismiss:hover { color: rgba(26,10,14,.70); }
+.popup__dismiss:hover { color: rgba(255,255,255,.80); }
 
 /* ═══════════════════════════════════════════════════════════
    LÉ-VI COMIDAS SAUDÁVEIS
@@ -891,10 +850,9 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .srv-block, .srv-block--reverse { grid-template-columns: 1fr; direction: ltr; }
   .srv-block__img-wrap { aspect-ratio: 16/9; }
   .srv-block__body { padding: 36px 32px; }
-  .namorados__inner { grid-template-columns: 1fr; gap: 48px; }
-  .namorados__img-wrap { aspect-ratio: 16/9; max-width: 560px; }
-  .popup { grid-template-columns: 1fr; max-width: 380px; }
-  .popup__img-wrap { display: none; }
+  .oferta__inner { grid-template-columns: 1fr; gap: 48px; }
+  .oferta__img-wrap { aspect-ratio: 4/5; max-width: 360px; margin: 0 auto; }
+  .popup { max-width: 380px; }
   .levi__inner { grid-template-columns: 1fr; gap: 48px; }
   .levi__img-col { order: -1; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -911,7 +869,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
-  .sobre, .servicos, .contato, .links-rapidos, .namorados, .levi, .como-chegar { padding: 90px 0; }
+  .sobre, .servicos, .contato, .links-rapidos, .oferta, .levi { padding: 90px 0; }
   .sobre__sub  { margin-bottom: 48px; }
   .cards-grid  { grid-template-columns: 1fr; }
   .wa-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -923,8 +881,8 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .btn         { justify-content: center; }
   .contato__wa { padding: 18px 28px; font-size: clamp(20px,5vw,28px); }
   .contato__levi { width: 100%; justify-content: center; }
-  .namorados__btn { width: 100%; justify-content: center; }
-  .popup__body { padding: 28px 24px 24px; }
+  .oferta__btn { width: 100%; justify-content: center; }
+  .popup__actions { padding: 14px 16px 16px; }
   .levi__btn   { width: 100%; justify-content: center; }
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
   .footer__bottom-inner { flex-direction: column; text-align: center; }
