@@ -514,6 +514,117 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .como-chegar__btn:hover { transform: translateY(-2px); border-color: rgba(249,100,11,.60); box-shadow: 0 10px 36px rgba(249,100,11,.22); }
 
 /* ═══════════════════════════════════════════════════════════
+   AVALIAÇÕES GOOGLE — SEÇÃO (fundo diferenciado)
+═══════════════════════════════════════════════════════════ */
+.reviews {
+  position: relative;
+  padding: 130px 0 120px;
+  background: radial-gradient(ellipse at 50% 0%, #16120c 0%, #070707 62%);
+  overflow: hidden;
+}
+.reviews__pattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 28%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 28%, #000 0%, transparent 72%);
+  pointer-events: none;
+}
+.reviews__glow {
+  position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+  width: 760px; height: 440px;
+  background: radial-gradient(ellipse, rgba(249,100,11,.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.reviews .container { position: relative; z-index: 1; }
+
+.reviews__title {
+  font-family: var(--fd);
+  font-size: clamp(44px,6vw,80px);
+  line-height: .94; letter-spacing: .02em;
+  text-align: center; color: var(--white);
+  margin-bottom: 40px;
+}
+
+/* Resumo / nota média */
+.reviews__summary {
+  display: flex; align-items: center; justify-content: center;
+  gap: 32px; flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+.reviews__rating { display: flex; align-items: center; gap: 16px; }
+.reviews__rating-num {
+  font-family: var(--fd); font-size: 60px; line-height: .9;
+  color: var(--white); letter-spacing: .02em;
+}
+.reviews__rating-right { display: flex; flex-direction: column; gap: 5px; }
+.reviews__stars { color: #fbbc04; letter-spacing: 3px; font-size: 19px; line-height: 1; }
+.reviews__rating-count {
+  font-family: var(--fu); font-size: 12px; font-weight: 400;
+  letter-spacing: .06em; color: var(--w50);
+}
+.reviews__google {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--fu); font-size: 11px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  text-decoration: none; padding: 13px 26px;
+  border-radius: 2px; background: rgba(249,100,11,.12);
+  color: var(--white); border: 1px solid rgba(249,100,11,.30);
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.reviews__google:hover { transform: translateY(-2px); border-color: rgba(249,100,11,.60); box-shadow: 0 10px 36px rgba(249,100,11,.22); }
+.reviews__google svg { width: 15px; height: 15px; flex-shrink: 0; opacity: .85; }
+
+/* Grid de cards */
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.review-card {
+  position: relative;
+  background: var(--w05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 26px;
+  display: flex; flex-direction: column;
+  transition: transform .4s cubic-bezier(.4,0,.2,1), border-color .4s, box-shadow .4s;
+}
+.review-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(249,100,11,.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+}
+.review-card__head { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
+.review-card__avatar {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 21px; letter-spacing: .02em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange), #b84807);
+}
+.review-card__meta { flex: 1; min-width: 0; }
+.review-card__name {
+  font-family: var(--fu); font-size: 14px; font-weight: 600;
+  color: var(--white); line-height: 1.2;
+}
+.review-card__role {
+  font-family: var(--fu); font-size: 11px; font-weight: 400;
+  color: var(--w50); letter-spacing: .02em; margin-top: 2px;
+}
+.review-card__g { width: 18px; height: 18px; flex-shrink: 0; color: var(--w50); }
+.review-card__stars { color: #fbbc04; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; line-height: 1; }
+.review-card__text {
+  font-family: var(--fu); font-size: 14px; font-weight: 300;
+  line-height: 1.72; color: var(--w80); flex: 1;
+}
+.review-card__date {
+  font-family: var(--fu); font-size: 11px; font-weight: 400;
+  letter-spacing: .06em; color: var(--w50); margin-top: 18px;
+}
+
+/* ═══════════════════════════════════════════════════════════
    OFERTA GÁS ULTRAGAZ — SEÇÃO
 ═══════════════════════════════════════════════════════════ */
 .oferta {
@@ -851,6 +962,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .srv-block__img-wrap { aspect-ratio: 16/9; }
   .srv-block__body { padding: 36px 32px; }
   .oferta__inner { grid-template-columns: 1fr; gap: 48px; }
+  .reviews__grid { grid-template-columns: repeat(2, 1fr); }
   .oferta__img-wrap { aspect-ratio: 4/5; max-width: 360px; margin: 0 auto; }
   .popup { max-width: 380px; }
   .levi__inner { grid-template-columns: 1fr; gap: 48px; }
@@ -869,8 +981,11 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
-  .sobre, .servicos, .contato, .links-rapidos, .oferta, .levi { padding: 90px 0; }
+  .sobre, .servicos, .contato, .links-rapidos, .oferta, .levi, .reviews { padding: 90px 0; }
   .sobre__sub  { margin-bottom: 48px; }
+  .reviews__grid { grid-template-columns: 1fr; }
+  .reviews__summary { gap: 22px; }
+  .reviews__google { width: 100%; justify-content: center; }
   .cards-grid  { grid-template-columns: 1fr; }
   .wa-grid     { grid-template-columns: 1fr 1fr; gap: 10px; }
   .wa-card     { padding: 24px 18px 22px; }
