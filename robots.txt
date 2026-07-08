@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://complexo34.com.br/sitemap.xml
