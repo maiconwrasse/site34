@@ -47,11 +47,50 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Complexo 34",
+    "alternateName": "Complexo 34 - Restaurante",
+    "description": "Restaurante com buffet caseiro na BR-386 KM 34, em Frederico Westphalen/RS. Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis no mesmo complexo.",
     "image": "https://complexo34.com.br/restaurante_34.JPG",
     "url": "https://complexo34.com.br/",
-    "telephone": "+5555996910733",
+    "telephone": "+555537447404",
     "priceRange": "R$$",
     "servesCuisine": "Brasileira",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "976"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "06:00",
+        "closes": "23:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "06:00",
+        "closes": "18:00"
+      }
+    ],
+    "department": {
+      "@type": "GasStation",
+      "name": "Posto Complexo 34 — Ipiranga",
+      "telephone": "+555537447404",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "BR-386, KM 34",
+        "addressLocality": "Frederico Westphalen",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "05:00",
+        "closes": "00:00"
+      }
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "BR-386, KM 34",
@@ -64,7 +103,7 @@
       "latitude": -27.3645413,
       "longitude": -53.3929737
     },
-    "hasMap": "https://maps.google.com/?q=Complexo+34+Restaurante+Frederico+Westphalen"
+    "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw"
   }
   </script>
 </head>
@@ -117,7 +156,7 @@
     </div>
     <div class="hero__divider"></div>
     <p class="hero__subtitle">Um complexo de possibilidades.</p>
-    <p class="hero__tagline">Posto&nbsp;·&nbsp;Restaurante&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;Experiência</p>
+    <p class="hero__tagline">Restaurante&nbsp;·&nbsp;Posto&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;BR-386&nbsp;KM&nbsp;34</p>
     <div class="hero__cta">
       <a href="#sobre"    class="btn btn--primary">Explorar Complexo</a>
       <a href="#servicos" class="btn btn--glass">Nossos Serviços</a>
@@ -240,6 +279,52 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════ SOBRE / QUEM SOMOS + COMO CHEGAR ═══════════════════════════════ -->
+<section class="sobre" id="sobre">
+  <div class="sobre__glow"></div>
+  <div class="container">
+    <div class="sec-label reveal">Quem somos</div>
+    <h2 class="sobre__title reveal">
+      Um complexo pensado para transformar<br />
+      <span class="accent">cada parada em experiência.</span>
+    </h2>
+    <p class="sobre__sub reveal">
+      Às margens da BR-386, no KM 34 em Frederico Westphalen/RS, o Complexo 34 é parada
+      obrigatória de quem viaja pela rodovia. Restaurante com buffet caseiro no almoço,
+      posto de combustível, gás e auto center reunidos em um só lugar — com qualidade,
+      conforto, banheiros limpos e atendimento bom de verdade.
+    </p>
+
+    <!-- Como chegar (integrado ao Quem somos) -->
+    <div class="sobre__chegar" id="como-chegar">
+      <div class="sec-label sec-label--center reveal">Localização</div>
+      <h3 class="como-chegar__title reveal">Como chegar</h3>
+      <p class="como-chegar__sub reveal">BR-386 · Frederico Westphalen/RS · Estamos esperando por você</p>
+      <div class="como-chegar__map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.3577278236407!2d-53.3929737!3d-27.3645413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fb9d14b697cbdd%3A0xdc84be3f9da53a71!2sComplexo%2034%20-%20Restaurante!5e0!3m2!1spt-BR!2sbr!4v1779819860132!5m2!1spt-BR!2sbr"
+          width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Localização Complexo 34">
+        </iframe>
+      </div>
+      <div class="como-chegar__info reveal">
+        <div class="como-chegar__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          BR-386 KM 34 · Frederico Westphalen/RS
+        </div>
+        <div class="como-chegar__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Posto: todos os dias, 5h às 00h · Restaurante: 6h às 23h30 (dom. até 18h)
+        </div>
+        <a href="https://maps.google.com/?q=Complexo+34+Restaurante+Frederico+Westphalen" target="_blank" rel="noopener" class="como-chegar__btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Abrir no Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════ OFERTA GÁS ULTRAGAZ — SEÇÃO ═══════════════════════════════ -->
 <section class="oferta" id="oferta-gas">
   <div class="oferta__ambient"></div>
@@ -281,7 +366,7 @@
     </button>
 
     <div class="popup__creative">
-      <img src="pop-up-site.svg" alt="Complexo 34 — conheça nosso site" />
+      <img src="pop-up-site.webp" alt="Complexo 34 — conheça nosso site" width="880" height="846" />
     </div>
 
     <div class="popup__actions">
@@ -293,50 +378,6 @@
     </div>
   </div>
 </div>
-
-<!-- ═══════════════════════════════ SOBRE / QUEM SOMOS + COMO CHEGAR ═══════════════════════════════ -->
-<section class="sobre" id="sobre">
-  <div class="sobre__glow"></div>
-  <div class="container">
-    <div class="sec-label reveal">Quem somos</div>
-    <h2 class="sobre__title reveal">
-      Um complexo pensado para transformar<br />
-      <span class="accent">cada parada em experiência.</span>
-    </h2>
-    <p class="sobre__sub reveal">
-      Na BR-386, o Complexo 34 reúne tudo que motoristas e famílias precisam e com
-      qualidade, conforto, banheiros limpos e atendimento bom de verdade.
-    </p>
-
-    <!-- Como chegar (integrado ao Quem somos) -->
-    <div class="sobre__chegar" id="como-chegar">
-      <div class="sec-label sec-label--center reveal">Localização</div>
-      <h3 class="como-chegar__title reveal">Como chegar</h3>
-      <p class="como-chegar__sub reveal">BR-386 · Frederico Westphalen/RS · Estamos esperando por você</p>
-      <div class="como-chegar__map-wrap reveal">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.3577278236407!2d-53.3929737!3d-27.3645413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fb9d14b697cbdd%3A0xdc84be3f9da53a71!2sComplexo%2034%20-%20Restaurante!5e0!3m2!1spt-BR!2sbr!4v1779819860132!5m2!1spt-BR!2sbr"
-          width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="Localização Complexo 34">
-        </iframe>
-      </div>
-      <div class="como-chegar__info reveal">
-        <div class="como-chegar__pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          BR-386 KM 34 · Frederico Westphalen/RS
-        </div>
-        <div class="como-chegar__pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Atendimento todos os dias
-        </div>
-        <a href="https://maps.google.com/?q=Complexo+34+Restaurante+Frederico+Westphalen" target="_blank" rel="noopener" class="como-chegar__btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-          Abrir no Google Maps
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════ LÉ-VI COMIDAS SAUDÁVEIS ═══════════════════════════════ -->
 <section class="levi" id="levi">
@@ -400,7 +441,7 @@
       <div class="srv-block__body">
         <div class="srv-block__tag srv-block__tag--blue">Gastronomia</div>
         <h3 class="srv-block__name">Restaurante</h3>
-        <p class="srv-block__desc">Café, almoço e janta</p>
+        <p class="srv-block__desc">Buffet à vontade no almoço, todos os dias das 11h30 às 13h30. Café e janta com comida caseira na beira da BR-386, em Frederico Westphalen. Ambiente climatizado, banheiros limpos e sobremesa de cortesia.</p>
         <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
            target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
@@ -477,15 +518,13 @@
 
     <div class="reviews__summary reveal">
       <div class="reviews__rating">
-        <!-- TODO: ajuste a média e o total reais do seu Google -->
         <span class="reviews__rating-num">4,6</span>
         <div class="reviews__rating-right">
           <div class="reviews__stars" aria-label="4,6 de 5 estrelas">★★★★☆</div>
-          <span class="reviews__rating-count">Avaliações no Google · 972 no total</span>
+          <span class="reviews__rating-count">Avaliações no Google · 976 no total</span>
         </div>
       </div>
-      <!-- TODO: cole aqui o link do seu perfil/avaliações no Google -->
-      <a href="https://maps.google.com/?q=Complexo+34+Restaurante+Frederico+Westphalen" target="_blank" rel="noopener" class="reviews__google">
+      <a href="https://search.google.com/local/reviews?placeid=ChIJ3cuXthSd-5QRcTqlnT--hNw" target="_blank" rel="noopener" class="reviews__google">
         <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
         Ver todas no Google
       </a>
