@@ -1,167 +1,701 @@
-/* ═══════════════════════════════════════════════════════════
-   SCRIPT.JS — Complexo 34
-═══════════════════════════════════════════════════════════ */
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complexo 34 — Restaurante, Posto Ipiranga e Serviços na BR-386 | Frederico Westphalen/RS</title>
+  <meta name="description" content="Complexo 34, na BR-386 KM 34 em Frederico Westphalen/RS: restaurante com buffet caseiro, Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis. Pare, abasteça e coma bem." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Complexo 34" />
+  <link rel="canonical" href="https://complexo34.com.br/" />
+  <meta name="theme-color" content="#050505" />
 
-/* ── NAVBAR: frosted glass ao rolar ── */
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+  <!-- Open Graph / redes sociais -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Complexo 34" />
+  <meta property="og:title" content="Complexo 34 — Um complexo de possibilidades na BR-386" />
+  <meta property="og:description" content="Restaurante, Posto Ipiranga, Ultragaz, Murilo Pneus e Lé-Vi Comidas Saudáveis em Frederico Westphalen/RS." />
+  <meta property="og:url" content="https://complexo34.com.br/" />
+  <meta property="og:image" content="https://complexo34.com.br/restaurante_34.JPG" />
+  <meta property="og:locale" content="pt_BR" />
 
-/* ── FIX VÍDEO MOBILE (iOS / Android) ── */
-(function () {
-  const video = document.querySelector('.hero__video');
-  if (!video) return;
-  // Garante atributos obrigatórios para autoplay no iOS
-  video.setAttribute('playsinline', '');
-  video.setAttribute('muted', '');
-  video.muted = true;
-  const tryPlay = () => {
-    const p = video.play();
-    if (p !== undefined) {
-      p.catch(() => {
-        // Se bloqueado, tenta novamente no primeiro toque/scroll
-        const unlock = () => { video.play(); document.removeEventListener('touchstart', unlock); window.removeEventListener('scroll', unlock); };
-        document.addEventListener('touchstart', unlock, { once: true });
-        window.addEventListener('scroll', unlock, { once: true, passive: true });
-      });
-    }
-  };
-  if (document.readyState === 'complete') { tryPlay(); }
-  else { window.addEventListener('load', tryPlay, { once: true }); }
-})();
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Complexo 34 — Um complexo de possibilidades na BR-386" />
+  <meta name="twitter:description" content="Restaurante, Posto Ipiranga, Ultragaz, Murilo Pneus e Lé-Vi em Frederico Westphalen/RS." />
+  <meta name="twitter:image" content="https://complexo34.com.br/restaurante_34.JPG" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="logo_34.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.png" />
 
-/* ── HAMBURGER / MENU MOBILE ── */
-const hamburger  = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6EQVEW7GG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K6EQVEW7GG');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
-});
-function openMenu() {
-  mobileMenu.style.display = 'flex';
-  requestAnimationFrame(() => {
-    mobileMenu.classList.add('open');
-    hamburger.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  });
-}
-function closeMenu() {
-  mobileMenu.classList.remove('open');
-  hamburger.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-  setTimeout(() => {
-    if (!mobileMenu.classList.contains('open')) mobileMenu.style.display = 'none';
-  }, 400);
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-
-/* ── HERO PARALLAX ── */
-const heroContent = document.querySelector('.hero__content');
-const glowL       = document.querySelector('.hero__glow-l');
-const glowR       = document.querySelector('.hero__glow-r');
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY, h = window.innerHeight;
-  if (y < h) {
-    const f = y / h;
-    if (heroContent) {
-      heroContent.style.transform = `translateY(${y * 0.20}px)`;
-      heroContent.style.opacity   = `${1 - f * 1.5}`;
-    }
-    if (glowL) glowL.style.transform = `translateY(${y * 0.10}px)`;
-    if (glowR) glowR.style.transform = `translateY(${-y * 0.07}px)`;
+  <!-- Dados estruturados (Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Complexo 34",
+    "alternateName": "Complexo 34 - Restaurante",
+    "description": "Restaurante com buffet caseiro na BR-386 KM 34, em Frederico Westphalen/RS. Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis no mesmo complexo.",
+    "image": "https://complexo34.com.br/restaurante_34.JPG",
+    "url": "https://complexo34.com.br/",
+    "telephone": "+555537447404",
+    "priceRange": "R$$",
+    "servesCuisine": "Brasileira",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "976"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "06:00",
+        "closes": "23:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "06:00",
+        "closes": "18:00"
+      }
+    ],
+    "department": {
+      "@type": "GasStation",
+      "name": "Posto Complexo 34 — Ipiranga",
+      "telephone": "+555537447404",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "BR-386, KM 34",
+        "addressLocality": "Frederico Westphalen",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "05:00",
+        "closes": "00:00"
+      }
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "BR-386, KM 34",
+      "addressLocality": "Frederico Westphalen",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -27.3645413,
+      "longitude": -53.3929737
+    },
+    "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw"
   }
-}, { passive: true });
+  </script>
+</head>
+<body>
 
-/* ── SCROLL REVEAL ── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="#inicio" class="navbar__logo" aria-label="Complexo 34">
+    <img src="logo_complexo_34.svg" alt="Complexo 34" />
+  </a>
+  <ul class="navbar__links">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#levi">Lé-Vi</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-/* ── CARD TILT 3D (cards do Sobre) ── */
-document.querySelectorAll('.card-unit').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    card.style.transform = `translateY(-6px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-});
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#inicio"   onclick="closeMenu()">Início</a>
+  <a href="#sobre"    onclick="closeMenu()">Sobre</a>
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#levi"     onclick="closeMenu()">Lé-Vi</a>
+  <a href="#contato"  onclick="closeMenu()">Contato</a>
+</div>
 
-/* ── WA CARDS: iluminação dinâmica ao hover ── */
-document.querySelectorAll('.wa-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width)  * 100;
-    const y = ((e.clientY - r.top)  / r.height) * 100;
-    const glow = card.querySelector('.wa-card__glow');
-    if (glow) {
-      glow.style.background =
-        `radial-gradient(circle at ${x}% ${y}%, ${
-          card.classList.contains('wa-card--blue')
-            ? 'rgba(65,121,196,.25)'
-            : 'rgba(249,100,11,.22)'
-        } 0%, transparent 65%)`;
-    }
-  });
-});
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero__video-wrap">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+           poster="restaurante_34.JPG"
+           webkit-playsinline x5-playsinline>
+      <source src="C34_video_hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__vignette"></div>
+  <div class="hero__glow-l"></div>
+  <div class="hero__glow-r"></div>
+  <div class="hero__grain"></div>
 
-/* ── SERVICE BLOCK: iluminação dinâmica ── */
-document.querySelectorAll('.srv-block').forEach(block => {
-  block.addEventListener('mousemove', e => {
-    const r = block.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width)  * 100;
-    const y = ((e.clientY - r.top)  / r.height) * 100;
-    block.style.backgroundImage =
-      `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.022) 0%, transparent 55%)`;
-  });
-  block.addEventListener('mouseleave', () => { block.style.backgroundImage = ''; });
-});
+  <div class="hero__content">
+    <p class="hero__label">Bem-vindo ao</p>
+    <div class="hero__logo-wrap">
+      <img src="logo_complexo_34.svg" alt="Complexo 34" class="hero__logo" />
+    </div>
+    <div class="hero__divider"></div>
+    <p class="hero__subtitle">Um complexo de possibilidades.</p>
+    <p class="hero__tagline">Restaurante&nbsp;·&nbsp;Posto&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;BR-386&nbsp;KM&nbsp;34</p>
+    <div class="hero__cta">
+      <a href="#sobre"    class="btn btn--primary">Explorar Complexo</a>
+      <a href="#servicos" class="btn btn--glass">Nossos Serviços</a>
+    </div>
+  </div>
 
-/* ── SMOOTH ANCHORS ── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', function(e) {
-    const t = document.querySelector(this.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-  });
-});
+  <div class="hero__scroll">
+    <div class="scroll-line"></div>
+    <span>Rolar</span>
+  </div>
+</section>
 
-/* ── POP-UP DIA DOS NAMORADOS ── */
-(function () {
-  const overlay  = document.getElementById('popup-overlay');
-  const btnClose = document.getElementById('popup-close');
-  const btnDismiss = document.getElementById('popup-dismiss');
+<!-- ═══════════════════════════════ LINKS RÁPIDOS (WhatsApp) ═══════════════════════════════ -->
+<section class="links-rapidos" id="links">
+  <div class="links-rapidos__ambient"></div>
+  <div class="container">
 
-  if (!overlay) return;
+    <div class="sec-label sec-label--center reveal">Acesso rápido</div>
+    <h2 class="links-rapidos__title reveal">Fale direto conosco</h2>
+    <p class="links-rapidos__sub reveal">Toque para abrir o WhatsApp</p>
 
-  function openPopup() {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closePopup() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    <div class="wa-grid">
 
-  // Abrir após 1.8s do carregamento
-  // ⏸️ POP-UP DESATIVADO TEMPORARIAMENTE — para religar, descomente a linha abaixo:
-  // setTimeout(openPopup, 1800);
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
+         target="_blank" rel="noopener"
+         class="wa-card wa-card--blue reveal" data-delay="0">
+        <div class="wa-card__glow"></div>
+        <div class="wa-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M3 8l4-4h10l4 4v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+            <path d="M9 22V12h6v10"/>
+          </svg>
+        </div>
+        <div class="wa-card__label">Restaurante</div>
+        <div class="wa-card__sub">Café, almoço e janta</div>
+        <div class="wa-card__cta">
+          <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Abrir WhatsApp
+        </div>
+      </a>
 
-  btnClose.addEventListener('click', closePopup);
-  btnDismiss.addEventListener('click', closePopup);
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034."
+         target="_blank" rel="noopener"
+         class="wa-card wa-card--orange reveal" data-delay="1">
+        <div class="wa-card__glow"></div>
+        <div class="wa-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M3 17h1m16 0h1M5 17V7a2 2 0 012-2h10a2 2 0 012 2v10"/>
+            <circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/>
+          </svg>
+        </div>
+        <div class="wa-card__label">Posto Ipiranga</div>
+        <div class="wa-card__sub">Gasolina · Diesel · Troca de Óleo</div>
+        <div class="wa-card__cta">
+          <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Abrir WhatsApp
+        </div>
+      </a>
 
-  // Fechar ao clicar fora do card
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closePopup();
-  });
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás."
+         target="_blank" rel="noopener"
+         class="wa-card wa-card--orange reveal" data-delay="2">
+        <div class="wa-card__glow"></div>
+        <div class="wa-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <ellipse cx="12" cy="8" rx="4" ry="6"/>
+            <path d="M8 14c0 3 1.5 6 4 6s4-3 4-6"/>
+            <path d="M6 20h12"/>
+          </svg>
+        </div>
+        <div class="wa-card__label">Ultragaz</div>
+        <div class="wa-card__sub">P13 · P20 · P45</div>
+        <div class="wa-card__cta wa-card__cta--pulse">
+          <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Pedir Gás agora
+        </div>
+      </a>
 
-  // Fechar com Escape
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closePopup();
-  });
-})();
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus."
+         target="_blank" rel="noopener"
+         class="wa-card wa-card--blue reveal" data-delay="3">
+        <div class="wa-card__glow"></div>
+        <div class="wa-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>
+            <path d="M12 3v2M12 19v2M3 12h2M19 12h2"/>
+          </svg>
+        </div>
+        <div class="wa-card__label">Murilo Pneus</div>
+        <div class="wa-card__sub">Auto Center completo</div>
+        <div class="wa-card__cta">
+          <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Abrir WhatsApp
+        </div>
+      </a>
+
+      <a href="https://levi-pronto-8kwn.vercel.app/"
+         target="_blank" rel="noopener"
+         class="wa-card wa-card--green reveal" data-delay="4">
+        <div class="wa-card__glow"></div>
+        <div class="wa-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M12 2a7 7 0 017 7c0 4-3 7-7 10C9 16 5 13 5 9a7 7 0 017-7z"/>
+            <path d="M12 6v4l2 2"/>
+          </svg>
+        </div>
+        <div class="wa-card__label">Lé-Vi Comidas</div>
+        <div class="wa-card__sub">Marmitas fit · Entrega</div>
+        <div class="wa-card__cta wa-card__cta--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="wa-icon-sm" style="fill:none">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Ver cardápio
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SOBRE / QUEM SOMOS + COMO CHEGAR ═══════════════════════════════ -->
+<section class="sobre" id="sobre">
+  <div class="sobre__glow"></div>
+  <div class="container">
+    <div class="sec-label reveal">Quem somos</div>
+    <h2 class="sobre__title reveal">
+      Um complexo pensado para transformar<br />
+      <span class="accent">cada parada em experiência.</span>
+    </h2>
+    <p class="sobre__sub reveal">
+      Às margens da BR-386, no KM 34 em Frederico Westphalen/RS, o Complexo 34 é parada
+      obrigatória de quem viaja pela rodovia. Restaurante com buffet caseiro no almoço,
+      posto de combustível, gás e auto center reunidos em um só lugar — com qualidade,
+      conforto, banheiros limpos e atendimento bom de verdade.
+    </p>
+
+    <!-- Como chegar (integrado ao Quem somos) -->
+    <div class="sobre__chegar" id="como-chegar">
+      <div class="sec-label sec-label--center reveal">Localização</div>
+      <h3 class="como-chegar__title reveal">Como chegar</h3>
+      <p class="como-chegar__sub reveal">BR-386 · Frederico Westphalen/RS · Estamos esperando por você</p>
+      <div class="como-chegar__map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.3577278236407!2d-53.3929737!3d-27.3645413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fb9d14b697cbdd%3A0xdc84be3f9da53a71!2sComplexo%2034%20-%20Restaurante!5e0!3m2!1spt-BR!2sbr!4v1779819860132!5m2!1spt-BR!2sbr"
+          width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Localização Complexo 34">
+        </iframe>
+      </div>
+      <div class="como-chegar__info reveal">
+        <div class="como-chegar__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          BR-386 KM 34 · Frederico Westphalen/RS
+        </div>
+        <div class="como-chegar__pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Posto: todos os dias, 5h às 00h · Restaurante: 6h às 23h30 (dom. até 18h)
+        </div>
+        <a href="https://maps.google.com/?q=Complexo+34+Restaurante+Frederico+Westphalen" target="_blank" rel="noopener" class="como-chegar__btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          Abrir no Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ OFERTA GÁS ULTRAGAZ — SEÇÃO ═══════════════════════════════ -->
+<section class="oferta" id="oferta-gas">
+  <div class="oferta__ambient"></div>
+  <div class="container oferta__inner">
+    <div class="oferta__img-col reveal">
+      <div class="oferta__img-wrap">
+        <img src="gas-site.png" alt="Gás P13 Ultragaz por R$ 104,90 — somente para retirada nos Postos Complexo 34 e Rótula Central" loading="lazy" />
+      </div>
+    </div>
+    <div class="oferta__body">
+      <div class="sec-label sec-label--orange reveal">Oferta Ultragaz</div>
+      <h2 class="oferta__title reveal">
+        Gás com o<br />melhor preço<br /><span class="accent--orange">é aqui.</span>
+      </h2>
+      <p class="oferta__desc reveal">
+        Botijão P13 da Ultragaz por R$&nbsp;104,90, somente para retirada nos Postos Complexo 34 e Rótula Central. Oferta por tempo limitado — preço válido para recarga; botijão não incluso.
+      </p>
+      <ul class="oferta__features reveal">
+        <li>🔥 &nbsp;Botijão P13 · 13&nbsp;kg</li>
+        <li>💰 &nbsp;R$ 104,90 na retirada</li>
+        <li>📍 &nbsp;Postos Complexo 34 e Rótula Central</li>
+        <li>⏳ &nbsp;Oferta por tempo limitado</li>
+      </ul>
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20do%20Gás%20P13%20Ultragaz%20por%20R$%20104,90."
+         target="_blank" rel="noopener"
+         class="oferta__btn reveal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+        Saber mais
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ POP-UP SITE ═══════════════════════════════ -->
+<div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true" aria-label="Complexo 34">
+  <div class="popup popup--site">
+    <button class="popup__close" id="popup-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="popup__creative">
+      <img src="pop-up-site.svg" alt="Complexo 34 — conheça nosso site" width="880" height="846" />
+    </div>
+
+    <div class="popup__actions">
+      <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener" class="popup__btn popup__btn--levi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Fazer pedido na Lé-Vi
+      </a>
+      <button class="popup__dismiss" id="popup-dismiss">Agora não</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ LÉ-VI COMIDAS SAUDÁVEIS ═══════════════════════════════ -->
+<section class="levi" id="levi">
+  <div class="levi__ambient-l"></div>
+  <div class="levi__ambient-r"></div>
+  <div class="container levi__inner">
+
+    <div class="levi__body">
+      <div class="sec-label sec-label--green reveal">Um produto do Complexo 34</div>
+      <div class="levi__logo-wrap reveal">
+        <img src="logo_levi.svg" alt="Lé-Vi Comidas Saudáveis" class="levi__logo" />
+      </div>
+      <h2 class="levi__title reveal">
+        Comida de verdade.<br /><span class="accent--green">Muito saborosa!</span>
+      </h2>
+      <p class="levi__desc reveal">
+        A Lé-Vi Comidas Saudáveis oferece opções práticas e saborosas para o dia a dia, com marmitas fit, coxinhas saudáveis, panquecas especiais, caldos e outros alimentos preparados com ingredientes selecionados. Tudo isso com a qualidade do Complexo 34.
+      </p>
+      <ul class="levi__features reveal">
+        <li>🥗 &nbsp;Refeições frescas e balanceadas</li>
+        <li>🌿 &nbsp;Ingredientes naturais e selecionados</li>
+        <li>🍱 &nbsp;Planos para você economizar</li>
+        <li>⚡ &nbsp;Entrega em Frederico Westphalen</li>
+      </ul>
+      <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener" class="levi__btn reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Quero saber mais
+      </a>
+    </div>
+
+    <div class="levi__img-col reveal">
+      <div class="levi__img-wrap">
+        <img src="LeVi_ComidaSaudavel.png" alt="Lé-Vi Comida Saudável" />
+        <div class="levi__img-glow"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SERVIÇOS ═══════════════════════════════ -->
+<section class="servicos" id="servicos">
+  <div class="servicos__ambient-l"></div>
+  <div class="servicos__ambient-r"></div>
+  <div class="container">
+
+    <div class="sec-label sec-label--center reveal">Nossos serviços</div>
+    <h2 class="servicos__title reveal">O que oferecemos</h2>
+    <p class="servicos__sub reveal">Conheça cada serviço e fale diretamente com nossa equipe</p>
+
+    <!-- RESTAURANTE -->
+    <div class="srv-block srv-block--blue reveal">
+      <div class="srv-block__img-wrap">
+        <img src="restaurante_34.JPG" alt="Restaurante" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--blue">Gastronomia</div>
+        <h3 class="srv-block__name">Restaurante</h3>
+        <p class="srv-block__desc">Buffet à vontade no almoço, todos os dias das 11h30 às 13h30. Café e janta com comida caseira na beira da BR-386, em Frederico Westphalen. Ambiente climatizado, banheiros limpos e sobremesa de cortesia.</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- POSTO -->
+    <div class="srv-block srv-block--orange srv-block--reverse reveal">
+      <div class="srv-block__img-wrap">
+        <img src="posto_34.JPG" alt="Posto Ipiranga" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--orange">Combustíveis · Ipiranga</div>
+        <h3 class="srv-block__name">Posto Complexo 34</h3>
+        <p class="srv-block__desc">Gasolina Comum · Ipimax · Ipimax PRO · Diesel S10 · Troca de Óleo</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- GÁS -->
+    <div class="srv-block srv-block--orange reveal">
+      <div class="srv-block__img-wrap">
+        <img src="gas_34.JPG" alt="Ultragaz" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--orange">Distribuidora · Ultragaz</div>
+        <h3 class="srv-block__name">Gás Ultragaz</h3>
+        <p class="srv-block__desc">P13 Residencial · P20 Comercial · P45 Industrial</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange srv-block__btn--pulse">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Pedir Gás agora
+        </a>
+      </div>
+    </div>
+
+    <!-- MURILO PNEUS -->
+    <div class="srv-block srv-block--blue srv-block--reverse reveal">
+      <div class="srv-block__img-wrap">
+        <img src="murilo_34.JPG" alt="Murilo Pneus" loading="lazy" />
+        <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
+      </div>
+      <div class="srv-block__body">
+        <div class="srv-block__tag srv-block__tag--blue">Auto Center</div>
+        <h3 class="srv-block__name">Murilo Pneus</h3>
+        <p class="srv-block__desc">Auto Center completo para seu veículo</p>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus."
+           target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ AVALIAÇÕES GOOGLE ═══════════════════════════════ -->
+<section class="reviews" id="avaliacoes">
+  <div class="reviews__pattern"></div>
+  <div class="reviews__glow"></div>
+  <div class="container">
+
+    <div class="sec-label sec-label--center reveal">Avaliações</div>
+    <h2 class="reviews__title reveal">O que dizem sobre nós</h2>
+
+    <div class="reviews__summary reveal">
+      <div class="reviews__rating">
+        <span class="reviews__rating-num">4,6</span>
+        <div class="reviews__rating-right">
+          <div class="reviews__stars" aria-label="4,6 de 5 estrelas">★★★★☆</div>
+          <span class="reviews__rating-count">Avaliações no Google · 976 no total</span>
+        </div>
+      </div>
+      <a href="https://search.google.com/local/reviews?placeid=ChIJ3cuXthSd-5QRcTqlnT--hNw" target="_blank" rel="noopener" class="reviews__google">
+        <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        Ver todas no Google
+      </a>
+    </div>
+
+    <div class="reviews__grid">
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">I</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Ivan Manfroi</div>
+            <div class="review-card__role">Local Guide · 14 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“Local muito bem localizado, ótima comida e ambiente limpo e agradável. Valeu a pena parar para o almoço!”</p>
+        <div class="review-card__date">Há 47 semanas</div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">P</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Paola Sabrine Kriek</div>
+            <div class="review-card__role">8 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“Uma ótima opção na rodovia, comida muito saborosa, bem caseira, espaço bonito, limpo. Banheiros super limpos, gostei muito!”</p>
+        <div class="review-card__date">Há 39 semanas</div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">K</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Kelia Silva</div>
+            <div class="review-card__role">Local Guide · 16 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“Comida excelente. Mesmo estando no Sul, me senti em Minas Gerais.”</p>
+        <div class="review-card__date">Há 27 semanas</div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">C</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Claudeny Santana</div>
+            <div class="review-card__role">Local Guide · 33 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“Ambiente climatizado, limpo e comida deliciosa. A sobremesa é cortesia e os atendentes são muito educados e prestativos.”</p>
+        <div class="review-card__date">Há 10 semanas</div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">G</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Gracieli Puiatti</div>
+            <div class="review-card__role">Local Guide · 336 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“O restaurante é lindo por dentro, bem limpo e serve comida maravilhosa! O buffet ao meio dia é muito bom. Tem sobremesa e cafezinho. Fica às margens da rodovia, em anexo a um posto de combustível. Quem estiver pela região vale a pena parar aí.”</p>
+        <div class="review-card__date">Há 8 semanas</div>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card__head">
+          <div class="review-card__avatar">G</div>
+          <div class="review-card__meta">
+            <div class="review-card__name">Graciela Schwendler</div>
+            <div class="review-card__role">10 avaliações</div>
+          </div>
+          <svg class="review-card__g" viewBox="0 0 48 48" fill="currentColor" aria-label="Google"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C40.9 4.2 32.9 1 24 1 11.8 1 2 10.8 2 23s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-3z"/></svg>
+        </div>
+        <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="review-card__text">“Excelente ambiente, limpeza e comida! Já salvei para as próximas paradas em nossas viagens! Parabéns à equipe!”</p>
+        <div class="review-card__date">Há 4 semanas</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTATO ═══════════════════════════════ -->
+<section class="contato" id="contato">
+  <div class="contato__glow"></div>
+  <div class="container contato__inner">
+    <div class="sec-label reveal">Contato direto</div>
+    <h2 class="contato__title reveal">Fale conosco e<br /><span class="accent">Tire suas dúvidas.</span></h2>
+    <p class="contato__sub reveal">Complexo 34 · Frederico Westphalen/RS</p>
+
+    <div class="contato__links reveal">
+      <a href="https://wa.me/5555996910733" target="_blank" rel="noopener" class="contato__wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+        (55) 99691-0733
+      </a>
+      <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener" class="contato__levi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Lé-Vi Comidas Saudáveis
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ RODAPÉ ═══════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container footer__grid">
+
+      <div class="footer__brand">
+        <img src="logo_complexo_34.svg" alt="Complexo 34" class="footer__logo" />
+        <p class="footer__tagline">Um complexo de possibilidades<br />Frederico Westphalen/RS</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Navegação</div>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#levi">Lé-Vi</a>
+        <a href="#contato">Contato</a>
+        <a href="#como-chegar">Como Chegar</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Serviços</div>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." target="_blank" rel="noopener">Restaurante</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." target="_blank" rel="noopener">Posto Ipiranga</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." target="_blank" rel="noopener">Gás Ultragaz</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." target="_blank" rel="noopener">Murilo Pneus</a>
+        <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">Lé-Vi Comidas</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Contato</div>
+        <a href="https://wa.me/5555996910733" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-1px;margin-right:5px;fill:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          (55) 99691-0733
+        </a>
+        <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">levicomidassaudaveis.com.br</a>
+        <span>Frederico Westphalen/RS</span>
+        <span>Seja bem-vindo!</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>© 2025 Complexo 34. Todos os direitos reservados.</span>
+      <span class="footer__credits">Desenvolvido por: Maicon Wrasse</span>
+    </div>
+  </div>
+
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

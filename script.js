@@ -149,7 +149,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }
 
   // Abrir após 1.8s do carregamento
-  setTimeout(openPopup, 1800);
+  // ⏸️ POP-UP DESATIVADO TEMPORARIAMENTE — para religar, descomente a linha abaixo:
+  // setTimeout(openPopup, 1800);
 
   btnClose.addEventListener('click', closePopup);
   btnDismiss.addEventListener('click', closePopup);
