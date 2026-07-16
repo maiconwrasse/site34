@@ -106,6 +106,86 @@
     "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw"
   }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quais formas de pagamento vocês aceitam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aceitamos cartão de crédito e débito das principais bandeiras, cartão Banrisul, Pix e dinheiro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tem estacionamento para caminhão?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Temos pátio para caminhões e carretas, além de estacionamento para carros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais combustíveis o posto vende?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vendemos gasolina comum (Original), Ipimax aditivada e Ipimax Pro para veículos de alta performance, diesel comum, diesel S10 e Arla 32."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O posto tem estrutura para o caminhoneiro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Temos chuveiro para banho, banheiros internos sempre limpos, banheiros para PCD e uma conveniência com bons lanches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona o restaurante ao longo do dia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No café da manhã servimos pastéis, torradas, coxinhas e outros salgados. No almoço, das 11h30 às 13h30, tem buffet livre e por quilo. À noite, cardápio à la carte com hambúrgueres, à la minuta, pratos mais elaborados e porções. Funcionamos de segunda a sábado das 6h às 23h30 e domingo das 6h às 18h."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Precisa reservar mesa no restaurante?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O restaurante aceita reservas. Para grupos ou horários de pico, vale garantir a mesa pelo WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais serviços a Murilo Pneus oferece e em que horário?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h. Fazemos pneus, baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona a venda de gás Ultragaz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabalhamos com botijões P13, P20 e P45. Na retirada, o P13 sai por R$ 104,90. Entregamos em toda a área urbana de Frederico Westphalen e aceitamos o Gás do Povo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tem Wi-Fi para os clientes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, Wi-Fi grátis para clientes, sem precisar fazer login."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -119,6 +199,7 @@
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#levi">Lé-Vi</a></li>
+    <li><a href="#como-chegar">Como Chegar</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
@@ -131,6 +212,7 @@
   <a href="#sobre"    onclick="closeMenu()">Sobre</a>
   <a href="#servicos" onclick="closeMenu()">Serviços</a>
   <a href="#levi"     onclick="closeMenu()">Lé-Vi</a>
+  <a href="#como-chegar" onclick="closeMenu()">Como Chegar</a>
   <a href="#contato"  onclick="closeMenu()">Contato</a>
 </div>
 
@@ -366,7 +448,7 @@
     </button>
 
     <div class="popup__creative">
-      <img src="pop-up-site.svg" alt="Complexo 34 — conheça nosso site" width="880" height="846" />
+      <!-- POP-UP TEMPORARIAMENTE DESATIVADO — descomente para reativar: <img src="pop-up-site.svg" alt="Complexo 34 — conheça nosso site" width="880" height="846" /> -->
     </div>
 
     <div class="popup__actions">
@@ -435,7 +517,7 @@
     <!-- RESTAURANTE -->
     <div class="srv-block srv-block--blue reveal">
       <div class="srv-block__img-wrap">
-        <img src="restaurante_34.JPG" alt="Restaurante" loading="lazy" />
+        <img src="restaurante_34.JPG" alt="Buffet caseiro do Restaurante Complexo 34, na BR-386 KM 34" loading="lazy" />
         <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
       </div>
       <div class="srv-block__body">
@@ -453,7 +535,7 @@
     <!-- POSTO -->
     <div class="srv-block srv-block--orange srv-block--reverse reveal">
       <div class="srv-block__img-wrap">
-        <img src="posto_34.JPG" alt="Posto Ipiranga" loading="lazy" />
+        <img src="posto_34.JPG" alt="Posto Ipiranga do Complexo 34, na BR-386 KM 34 em Frederico Westphalen/RS" loading="lazy" />
         <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
       </div>
       <div class="srv-block__body">
@@ -471,7 +553,7 @@
     <!-- GÁS -->
     <div class="srv-block srv-block--orange reveal">
       <div class="srv-block__img-wrap">
-        <img src="gas_34.JPG" alt="Ultragaz" loading="lazy" />
+        <img src="gas_34.JPG" alt="Revenda de gás Ultragaz P13 no Complexo 34" loading="lazy" />
         <div class="srv-block__img-ov srv-block__img-ov--orange"></div>
       </div>
       <div class="srv-block__body">
@@ -489,7 +571,7 @@
     <!-- MURILO PNEUS -->
     <div class="srv-block srv-block--blue srv-block--reverse reveal">
       <div class="srv-block__img-wrap">
-        <img src="murilo_34.JPG" alt="Murilo Pneus" loading="lazy" />
+        <img src="murilo_34.JPG" alt="Murilo Pneus Auto Center, no Complexo 34" loading="lazy" />
         <div class="srv-block__img-ov srv-block__img-ov--blue"></div>
       </div>
       <div class="srv-block__body">
@@ -620,6 +702,57 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="faq__glow"></div>
+  <div class="container">
+
+    <div class="sec-label sec-label--center reveal">Perguntas frequentes</div>
+    <h2 class="faq__title reveal">Antes de parar,<br /><span class="accent">tire suas dúvidas.</span></h2>
+    <p class="faq__sub reveal">Complexo 34 · BR-386 KM 34 · Frederico Westphalen/RS</p>
+
+    <div class="faq__list reveal">
+      <details>
+        <summary class="faq__q">Quais formas de pagamento vocês aceitam?</summary>
+        <div class="faq__a">Aceitamos cartão de crédito e débito das principais bandeiras, cartão Banrisul, Pix e dinheiro.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Tem estacionamento para caminhão?</summary>
+        <div class="faq__a">Sim. Temos pátio para caminhões e carretas, além de estacionamento para carros.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Quais combustíveis o posto vende?</summary>
+        <div class="faq__a">Vendemos gasolina comum (Original), Ipimax aditivada e Ipimax Pro para veículos de alta performance, diesel comum, diesel S10 e Arla 32.</div>
+      </details>
+      <details>
+        <summary class="faq__q">O posto tem estrutura para o caminhoneiro?</summary>
+        <div class="faq__a">Sim. Temos chuveiro para banho, banheiros internos sempre limpos, banheiros para PCD e uma conveniência com bons lanches.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Como funciona o restaurante ao longo do dia?</summary>
+        <div class="faq__a">No café da manhã servimos pastéis, torradas, coxinhas e outros salgados. No almoço, das 11h30 às 13h30, tem buffet livre e por quilo. À noite, cardápio à la carte com hambúrgueres, à la minuta, pratos mais elaborados e porções. Funcionamos de segunda a sábado das 6h às 23h30 e domingo das 6h às 18h.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Precisa reservar mesa no restaurante?</summary>
+        <div class="faq__a">O restaurante aceita reservas. Para grupos ou horários de pico, vale garantir a mesa pelo WhatsApp.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Quais serviços a Murilo Pneus oferece e em que horário?</summary>
+        <div class="faq__a">A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h. Fazemos pneus, baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Como funciona a venda de gás Ultragaz?</summary>
+        <div class="faq__a">Trabalhamos com botijões P13, P20 e P45. Na retirada, o P13 sai por R$ 104,90. Entregamos em toda a área urbana de Frederico Westphalen e aceitamos o Gás do Povo.</div>
+      </details>
+      <details>
+        <summary class="faq__q">Tem Wi-Fi para os clientes?</summary>
+        <div class="faq__a">Sim, Wi-Fi grátis para clientes, sem precisar fazer login.</div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
 <!-- ═══════════════════════════════ CONTATO ═══════════════════════════════ -->
 <section class="contato" id="contato">
   <div class="contato__glow"></div>
@@ -632,6 +765,10 @@
       <a href="https://wa.me/5555996910733" target="_blank" rel="noopener" class="contato__wa">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
         (55) 99691-0733
+      </a>
+      <a href="tel:+555537447404" class="contato__tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Ligar (55) 3744-7404
       </a>
       <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener" class="contato__levi">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -680,6 +817,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-1px;margin-right:5px;fill:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           (55) 99691-0733
         </a>
+        <a href="tel:+555537447404">Ligar (55) 3744-7404</a>
         <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">levicomidassaudaveis.com.br</a>
         <span>Frederico Westphalen/RS</span>
         <span>Seja bem-vindo!</span>
