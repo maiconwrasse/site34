@@ -165,3 +165,49 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (e.key === 'Escape') closePopup();
   });
 })();
+
+
+/* ── ABERTO AGORA — status ao vivo (fuso America/Sao_Paulo) ── */
+(function () {
+  const el = document.getElementById('hero-status');
+  if (!el) return;
+  const txt = document.getElementById('hero-status-text');
+
+  // Horários em minutos-do-dia. Índice do dia: 0=domingo … 6=sábado
+  const POSTO = {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]};
+  const REST  = {0:[[360,1080]],1:[[360,1410]],2:[[360,1410]],3:[[360,1410]],4:[[360,1410]],5:[[360,1410]],6:[[360,1410]]};
+
+  function nowBSB() {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+    const m = {}; parts.forEach(p => m[p.type] = p.value);
+    const wd = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 }[m.weekday];
+    let h = parseInt(m.hour, 10); if (h === 24) h = 0;
+    return { wd, min: h * 60 + parseInt(m.minute, 10) };
+  }
+  const isOpen = (s, wd, min) => (s[wd] || []).some(([a, b]) => min >= a && min < b);
+  const slot   = (s, wd, min) => (s[wd] || []).find(([a, b]) => min >= a && min < b);
+  const next   = (s, wd, min) => (s[wd] || []).find(([a]) => a > min);
+  const fmt = (min) => { const h = Math.floor(min / 60) % 24, m = min % 60; return m ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`; };
+
+  function update() {
+    const { wd, min } = nowBSB();
+    el.classList.remove('is-open', 'is-closed');
+    if (isOpen(POSTO, wd, min)) {
+      el.classList.add('is-open');
+      let detalhe;
+      if (isOpen(REST, wd, min)) {
+        detalhe = `Restaurante servindo até ${fmt(slot(REST, wd, min)[1])}`;
+      } else {
+        const prox = next(REST, wd, min);
+        detalhe = prox ? `Restaurante abre às ${fmt(prox[0])}` : 'Restaurante fechado por hoje';
+      }
+      txt.innerHTML = `<b>Aberto agora</b> · ${detalhe}`;
+    } else {
+      el.classList.add('is-closed');
+      txt.innerHTML = `<b>Fechado agora</b> · Posto abre às 5h`;
+    }
+    el.classList.add('is-ready');
+  }
+  update();
+  setInterval(update, 60000);
+})();

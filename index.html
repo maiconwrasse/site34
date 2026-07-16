@@ -156,7 +156,7 @@
       "name": "Precisa reservar mesa no restaurante?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O restaurante aceita reservas. Para grupos ou horários de pico, vale garantir a mesa pelo WhatsApp."
+        "text": "Não é necessário reservar — é só chegar. Mas aceitamos reservas, e para grandes grupos de excursão ou viagem, o ideal é reservar com antecedência pelo WhatsApp."
       }
     },
     {
@@ -164,7 +164,7 @@
       "name": "Quais serviços a Murilo Pneus oferece e em que horário?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h. Fazemos pneus, baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões."
+        "text": "A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h, e aos sábados das 8h às 12h. Comercializamos e fazemos a troca de pneus, além de baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões."
       }
     },
     {
@@ -239,6 +239,10 @@
     <div class="hero__divider"></div>
     <p class="hero__subtitle">Um complexo de possibilidades.</p>
     <p class="hero__tagline">Restaurante&nbsp;·&nbsp;Posto&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;BR-386&nbsp;KM&nbsp;34</p>
+    <div class="hero__status" id="hero-status" role="status" aria-live="polite">
+      <span class="hero__status-dot"></span>
+      <span class="hero__status-text" id="hero-status-text">Verificando horário…</span>
+    </div>
     <div class="hero__cta">
       <a href="#sobre"    class="btn btn--primary">Explorar Complexo</a>
       <a href="#servicos" class="btn btn--glass">Nossos Serviços</a>
@@ -377,6 +381,56 @@
       conforto, banheiros limpos e atendimento bom de verdade.
     </p>
 
+    <!-- FAQ (perguntas frequentes) integrado ao Quem somos -->
+    <div class="sobre__faq" id="faq">
+      <div class="sec-label sec-label--center reveal">Perguntas frequentes</div>
+      <h3 class="faq__title reveal">Antes de parar,<br /><span class="accent">tire suas dúvidas.</span></h3>
+      <div class="faq__list reveal">
+        <details>
+          <summary class="faq__q">Quais formas de pagamento vocês aceitam?</summary>
+          <div class="faq__a">Aceitamos cartão de crédito e débito das principais bandeiras, cartão Banrisul, Pix e dinheiro.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Tem estacionamento para caminhão?</summary>
+          <div class="faq__a">Sim. Temos pátio para caminhões e carretas, além de estacionamento para carros.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Quais combustíveis o posto vende?</summary>
+          <div class="faq__a">Vendemos gasolina comum (Original), Ipimax aditivada e Ipimax Pro para veículos de alta performance, diesel comum, diesel S10 e Arla 32.</div>
+        </details>
+        <details>
+          <summary class="faq__q">O posto tem estrutura para o caminhoneiro?</summary>
+          <div class="faq__a">Sim. Temos chuveiro para banho, banheiros internos sempre limpos, banheiros para PCD e uma conveniência com bons lanches.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Como funciona o restaurante ao longo do dia?</summary>
+          <div class="faq__a">No café da manhã servimos pastéis, torradas, coxinhas e outros salgados. No almoço, das 11h30 às 13h30, tem buffet livre e por quilo. À noite, cardápio à la carte com hambúrgueres, à la minuta, pratos mais elaborados e porções. Funcionamos de segunda a sábado das 6h às 23h30 e domingo das 6h às 18h.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Precisa reservar mesa no restaurante?</summary>
+          <div class="faq__a">Não é necessário reservar — é só chegar. Mas aceitamos reservas, e para grandes grupos de excursão ou viagem, o ideal é reservar com antecedência pelo WhatsApp.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Quais serviços a Murilo Pneus oferece e em que horário?</summary>
+          <div class="faq__a">A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h, e aos sábados das 8h às 12h. Comercializamos e fazemos a troca de pneus, além de baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Como funciona a venda de gás Ultragaz?</summary>
+          <div class="faq__a">Trabalhamos com botijões P13, P20 e P45. Na retirada, o P13 sai por R$ 104,90. Entregamos em toda a área urbana de Frederico Westphalen e aceitamos o Gás do Povo.</div>
+        </details>
+        <details>
+          <summary class="faq__q">Tem Wi-Fi para os clientes?</summary>
+          <div class="faq__a">Sim, Wi-Fi grátis para clientes, sem precisar fazer login.</div>
+        </details>
+      </div>
+      <div class="faq__cta-wrap reveal">
+        <a href="https://wa.me/5555996910733?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Complexo%2034." target="_blank" rel="noopener" class="faq__cta">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
+          Fale conosco no WhatsApp
+        </a>
+      </div>
+    </div>
+
     <!-- Como chegar (integrado ao Quem somos) -->
     <div class="sobre__chegar" id="como-chegar">
       <div class="sec-label sec-label--center reveal">Localização</div>
@@ -404,6 +458,7 @@
         </a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -699,57 +754,6 @@
       </article>
 
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
-<section class="faq" id="faq">
-  <div class="faq__glow"></div>
-  <div class="container">
-
-    <div class="sec-label sec-label--center reveal">Perguntas frequentes</div>
-    <h2 class="faq__title reveal">Antes de parar,<br /><span class="accent">tire suas dúvidas.</span></h2>
-    <p class="faq__sub reveal">Complexo 34 · BR-386 KM 34 · Frederico Westphalen/RS</p>
-
-    <div class="faq__list reveal">
-      <details>
-        <summary class="faq__q">Quais formas de pagamento vocês aceitam?</summary>
-        <div class="faq__a">Aceitamos cartão de crédito e débito das principais bandeiras, cartão Banrisul, Pix e dinheiro.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Tem estacionamento para caminhão?</summary>
-        <div class="faq__a">Sim. Temos pátio para caminhões e carretas, além de estacionamento para carros.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Quais combustíveis o posto vende?</summary>
-        <div class="faq__a">Vendemos gasolina comum (Original), Ipimax aditivada e Ipimax Pro para veículos de alta performance, diesel comum, diesel S10 e Arla 32.</div>
-      </details>
-      <details>
-        <summary class="faq__q">O posto tem estrutura para o caminhoneiro?</summary>
-        <div class="faq__a">Sim. Temos chuveiro para banho, banheiros internos sempre limpos, banheiros para PCD e uma conveniência com bons lanches.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Como funciona o restaurante ao longo do dia?</summary>
-        <div class="faq__a">No café da manhã servimos pastéis, torradas, coxinhas e outros salgados. No almoço, das 11h30 às 13h30, tem buffet livre e por quilo. À noite, cardápio à la carte com hambúrgueres, à la minuta, pratos mais elaborados e porções. Funcionamos de segunda a sábado das 6h às 23h30 e domingo das 6h às 18h.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Precisa reservar mesa no restaurante?</summary>
-        <div class="faq__a">O restaurante aceita reservas. Para grupos ou horários de pico, vale garantir a mesa pelo WhatsApp.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Quais serviços a Murilo Pneus oferece e em que horário?</summary>
-        <div class="faq__a">A Murilo Pneus atende de segunda a sexta, das 8h às 12h e das 13h30 às 18h. Fazemos pneus, baterias, borracharia, balanceamento, geometria, revisões e manutenções mecânicas — para veículos utilitários, até van. Não atendemos caminhões.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Como funciona a venda de gás Ultragaz?</summary>
-        <div class="faq__a">Trabalhamos com botijões P13, P20 e P45. Na retirada, o P13 sai por R$ 104,90. Entregamos em toda a área urbana de Frederico Westphalen e aceitamos o Gás do Povo.</div>
-      </details>
-      <details>
-        <summary class="faq__q">Tem Wi-Fi para os clientes?</summary>
-        <div class="faq__a">Sim, Wi-Fi grátis para clientes, sem precisar fazer login.</div>
-      </details>
-    </div>
-
   </div>
 </section>
 
