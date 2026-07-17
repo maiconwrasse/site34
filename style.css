@@ -1061,3 +1061,20 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 @media (max-width: 600px) {
   .hero__status { font-size: 12px; margin-bottom: 28px; }
 }
+
+/* ═══════════════ ABERTO AGORA (selo da navbar) ═══════════════ */
+.navbar__status { display: inline-flex; align-items: center; gap: 8px; margin-left: 34px; padding: 6px 14px; border-radius: 100px; background: rgba(255,255,255,.06); border: 1px solid var(--w15); font-family: var(--fu); font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--w80); white-space: nowrap; opacity: 0; transition: opacity .5s ease; }
+.navbar__status.is-ready { opacity: 1; }
+.navbar__status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--w50); flex-shrink: 0; transition: background .3s; }
+.navbar__status.is-open .navbar__status-dot { background: #3ddc84; animation: statusPulse 2.4s ease-out infinite; }
+.navbar__status.is-closed .navbar__status-dot { background: #e0603d; }
+@media (max-width: 960px) {
+  .navbar__links { gap: 26px; }
+  .navbar__status { margin-left: 24px; }
+}
+@media (max-width: 768px) {
+  .hamburger { margin-left: 18px; }
+}
+@media (max-width: 420px) {
+  .navbar__status { margin-left: 12px; padding: 5px 10px; font-size: 9px; letter-spacing: .10em; }
+}

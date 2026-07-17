@@ -166,12 +166,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
-
 /* ── ABERTO AGORA — status ao vivo (fuso America/Sao_Paulo) ── */
 (function () {
-  const el = document.getElementById('hero-status');
-  if (!el) return;
-  const txt = document.getElementById('hero-status-text');
+  const heroEl = document.getElementById('hero-status');
+  const navEl  = document.getElementById('nav-status');
+  if (!heroEl && !navEl) return;
+  const heroTxt = document.getElementById('hero-status-text');
+  const navTxt  = document.getElementById('nav-status-text');
 
   // Horários em minutos-do-dia. Índice do dia: 0=domingo … 6=sábado
   const POSTO = {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]};
@@ -185,28 +186,32 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     return { wd, min: h * 60 + parseInt(m.minute, 10) };
   }
   const isOpen = (s, wd, min) => (s[wd] || []).some(([a, b]) => min >= a && min < b);
-  const slot   = (s, wd, min) => (s[wd] || []).find(([a, b]) => min >= a && min < b);
   const next   = (s, wd, min) => (s[wd] || []).find(([a]) => a > min);
   const fmt = (min) => { const h = Math.floor(min / 60) % 24, m = min % 60; return m ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`; };
 
+  function setState(el, open) {
+    if (!el) return;
+    el.classList.remove('is-open', 'is-closed');
+    el.classList.add(open ? 'is-open' : 'is-closed', 'is-ready');
+  }
+
   function update() {
     const { wd, min } = nowBSB();
-    el.classList.remove('is-open', 'is-closed');
-    if (isOpen(POSTO, wd, min)) {
-      el.classList.add('is-open');
+    const postoOpen = isOpen(POSTO, wd, min);
+    const restOpen  = isOpen(REST, wd, min);
+    setState(heroEl, postoOpen);
+    setState(navEl, postoOpen);
+
+    if (postoOpen) {
       let detalhe;
-      if (isOpen(REST, wd, min)) {
-        detalhe = `Restaurante servindo até ${fmt(slot(REST, wd, min)[1])}`;
-      } else {
-        const prox = next(REST, wd, min);
-        detalhe = prox ? `Restaurante abre às ${fmt(prox[0])}` : 'Restaurante fechado por hoje';
-      }
-      txt.innerHTML = `<b>Aberto agora</b> · ${detalhe}`;
+      if (restOpen) detalhe = 'Restaurante aberto';
+      else { const prox = next(REST, wd, min); detalhe = prox ? `Restaurante abre às ${fmt(prox[0])}` : 'Restaurante fechado por hoje'; }
+      if (heroTxt) heroTxt.innerHTML = `<b>Aberto agora</b> · ${detalhe}`;
+      if (navTxt)  navTxt.textContent = 'Aberto';
     } else {
-      el.classList.add('is-closed');
-      txt.innerHTML = `<b>Fechado agora</b> · Posto abre às 5h`;
+      if (heroTxt) heroTxt.innerHTML = `<b>Fechado agora</b> · Posto abre às 5h`;
+      if (navTxt)  navTxt.textContent = 'Fechado';
     }
-    el.classList.add('is-ready');
   }
   update();
   setInterval(update, 60000);
