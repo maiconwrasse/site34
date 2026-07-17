@@ -253,3 +253,94 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   update();
   setInterval(update, 60000);
 })();
+
+
+/* ── CARROSSEL (serviços + avaliações): autoplay, arrasto, setas, dica ── */
+(function () {
+  document.querySelectorAll('.js-carousel').forEach(setup);
+
+  function arrow(dir) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'carousel__arrow carousel__arrow--' + dir;
+    b.setAttribute('aria-label', dir === 'prev' ? 'Anterior' : 'Próximo');
+    b.innerHTML = '<span>' + (dir === 'prev' ? '\u2039' : '\u203A') + '</span>';
+    return b;
+  }
+
+  function setup(track) {
+    const box = document.createElement('div');
+    box.className = 'carousel';
+    track.parentNode.insertBefore(box, track);
+    box.appendChild(track);
+    track.classList.add('carousel__track');
+    if (track.dataset.hint === 'top') box.classList.add('carousel--hint-top');
+
+    // itens visíveis já de cara (não dependem do scroll-reveal)
+    track.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+    const prev = arrow('prev'), next = arrow('next');
+    const hint = document.createElement('div');
+    hint.className = 'carousel__hint';
+    hint.setAttribute('aria-hidden', 'true');
+    hint.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8l4 4-4 4"/><path d="M6 8l-4 4 4 4"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span>arraste</span>';
+    box.append(prev, next, hint);
+
+    const gapPx = () => parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+    const step = () => { const it = track.children[0]; return it ? it.getBoundingClientRect().width + gapPx() : track.clientWidth; };
+    const atStart = () => track.scrollLeft <= 4;
+    const atEnd = () => track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    const go = (d) => track.scrollBy({ left: d * step(), behavior: 'smooth' });
+
+    function updateArrows() {
+      box.classList.toggle('at-start', atStart());
+      box.classList.toggle('at-end', atEnd());
+    }
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    setTimeout(updateArrows, 60);
+
+    prev.addEventListener('click', () => { go(-1); nudge(); });
+    next.addEventListener('click', () => { go(1); nudge(); });
+
+    // autoplay (pausa: hover, interação, fora da tela)
+    const interval = parseInt(track.dataset.autoplay || '5000', 10);
+    let paused = false, inView = true, resumeTO = null;
+    function tick() {
+      if (paused || !inView) return;
+      if (atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else go(1);
+    }
+    if (interval > 0) setInterval(tick, interval);
+    function nudge() { paused = true; clearTimeout(resumeTO); resumeTO = setTimeout(() => { paused = false; }, 9000); }
+    box.addEventListener('mouseenter', () => { paused = true; });
+    box.addEventListener('mouseleave', () => { if (!resumeTO) paused = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => es.forEach(e => { inView = e.isIntersecting; }), { threshold: 0.15 }).observe(box);
+    }
+
+    // esconde a dica na 1ª interação
+    const used = () => box.classList.add('is-used');
+    ['pointerdown', 'wheel', 'touchstart'].forEach(ev => track.addEventListener(ev, used, { once: true, passive: true }));
+
+    // arrasto com mouse (toque usa o scroll nativo)
+    let down = false, sx = 0, sl = 0, moved = false;
+    track.addEventListener('pointerdown', e => {
+      nudge();
+      if (e.pointerType === 'touch') return;
+      down = true; moved = false; sx = e.clientX; sl = track.scrollLeft;
+      track.classList.add('is-dragging');
+      try { track.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    track.addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - sx;
+      if (Math.abs(dx) > 3) moved = true;
+      track.scrollLeft = sl - dx;
+    });
+    function endDrag() { if (!down) return; down = false; track.classList.remove('is-dragging'); }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    // impede que o arrasto do mouse dispare clique (ex.: abrir WhatsApp)
+    track.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  }
+})();

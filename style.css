@@ -1069,16 +1069,48 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .status-chip { padding: 7px 13px; font-size: 11px; }
 }
 
-/* ═══════════════ ACESSO RÁPIDO — carrossel horizontal (mobile) ═══════════════ */
+/* ═══════════════ ACESSO RÁPIDO — cards compactos estáticos (mobile) ═══════════════ */
 @media (max-width: 640px) {
-  .wa-grid {
-    display: flex; flex-wrap: nowrap; grid-template-columns: none; gap: 12px;
-    margin: 0 -20px; padding: 4px 20px 18px;
-    overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .wa-grid::-webkit-scrollbar { display: none; }
-  .wa-grid > .wa-card {
-    flex: 0 0 72%; scroll-snap-align: center; min-width: 0;
-  }
+  .wa-grid { display: flex; flex-wrap: wrap; justify-content: center; grid-template-columns: none; gap: 10px; }
+  .wa-grid > .wa-card { flex: 0 0 calc(50% - 5px); padding: 16px 14px; }
+  .wa-card__icon { width: 36px; height: 36px; margin-bottom: 10px; }
+  .wa-card__icon svg { width: 18px; height: 18px; }
+  .wa-card__label { font-size: 18px; }
+  .wa-card__sub { font-size: 11px; margin-bottom: 14px; letter-spacing: .04em; }
+  .wa-card__cta { font-size: 9px; padding: 7px 11px; letter-spacing: .12em; gap: 5px; }
+}
+@media (max-width: 380px) {
+  .wa-grid > .wa-card { padding: 14px 12px; }
+  .wa-card__label { font-size: 16px; }
+  .wa-card__sub { font-size: 10px; }
+}
+
+/* ═══════════════ CARROSSEL (serviços + avaliações) ═══════════════ */
+.carousel { position: relative; }
+.carousel__track { display: flex; flex-wrap: nowrap; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-behavior: smooth; cursor: grab; padding-bottom: 2px; }
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track.is-dragging { cursor: grabbing; scroll-behavior: auto; scroll-snap-type: none; }
+.carousel__track > * { flex: 0 0 auto; scroll-snap-align: center; }
+.carousel__track.is-dragging * { pointer-events: none; }
+.srv-track.carousel__track { gap: 0; }
+.srv-track > .srv-block { flex: 0 0 100%; margin-bottom: 0; }
+.reviews__grid.carousel__track { gap: 22px; }
+.reviews__grid > .review-card { flex: 0 0 calc((100% - 44px) / 3); }
+.carousel__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 6; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(8,8,8,.55); border: 1px solid var(--w15); color: var(--white); cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-family: var(--fd); font-size: 32px; line-height: 0; transition: background .3s, border-color .3s, opacity .3s, transform .3s; }
+.carousel__arrow span { display: block; transform: translateY(-3px); }
+.carousel__arrow--prev { left: -12px; }
+.carousel__arrow--next { right: -12px; }
+.carousel__arrow:hover { background: rgba(18,18,18,.9); border-color: var(--w30); }
+.carousel__arrow:active { transform: translateY(-50%) scale(.94); }
+.carousel.at-start .carousel__arrow--prev, .carousel.at-end .carousel__arrow--next { opacity: .22; pointer-events: none; }
+.carousel__hint { position: absolute; left: 50%; bottom: -16px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; padding: 7px 15px; border-radius: 100px; background: rgba(8,8,8,.6); border: 1px solid var(--w15); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-family: var(--fu); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--w80); pointer-events: none; opacity: 1; transition: opacity .5s ease; z-index: 6; }
+.carousel__hint svg { width: 26px; height: 15px; animation: hintSwipe 2.2s ease-in-out infinite; }
+.carousel.is-used .carousel__hint { opacity: 0; }
+@keyframes hintSwipe { 0%, 100% { transform: translateX(-4px); opacity: .55; } 50% { transform: translateX(4px); opacity: 1; } }
+/* dica de arraste acima dos cards (serviços) — seta animada, sem pill */
+.carousel--hint-top .carousel__hint { top: -44px; bottom: auto; background: transparent; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; gap: 9px; color: var(--w50); letter-spacing: .22em; }
+.carousel--hint-top .carousel__hint svg { width: 40px; height: 20px; }
+@media (max-width: 900px) {
+  .carousel__arrow { display: none; }
+  .reviews__grid > .review-card { flex: 0 0 80%; }
 }
