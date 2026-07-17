@@ -174,16 +174,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   if (!panel) return;
 
   // Horários em minutos-do-dia. Índice do dia: 0=domingo … 6=sábado
-  const H = {
-    posto:  { el: 'st-posto',  aberto: 'Posto aberto',       fechado: 'Posto fechado',
+  const UNITS = {
+    posto:  { el: 'st-posto',  on: 'Posto aberto',        off: 'Posto fechado',
               hor: {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]} },
-    rest:   { el: 'st-rest',   aberto: 'Restaurante aberto', fechado: 'Restaurante fechado',
-              hor: {0:[[360,1080]],1:[[360,1410]],2:[[360,1410]],3:[[360,1410]],4:[[360,1410]],5:[[360,1410]],6:[[360,1410]]} },
-    gas:    { el: 'st-gas',    aberto: 'Gás entregando',     fechado: 'Gás encerrado',
+    gas:    { el: 'st-gas',    on: 'Ultragaz aberto',     off: 'Ultragaz fechado',
               hor: {0:[[450,1320]],1:[[450,1320]],2:[[450,1320]],3:[[450,1320]],4:[[450,1320]],5:[[450,1320]],6:[[450,1320]]} },
-    murilo: { el: 'st-murilo', aberto: 'Murilo Pneus aberta', fechado: 'Murilo Pneus fechada',
+    murilo: { el: 'st-murilo', on: 'Murilo Pneus aberto', off: 'Murilo Pneus fechado',
               hor: {1:[[480,720],[810,1080]],2:[[480,720],[810,1080]],3:[[480,720],[810,1080]],4:[[480,720],[810,1080]],5:[[480,720],[810,1080]],6:[[480,720]]} }
   };
+
+  // Restaurante: mostra a FASE atual. seg–sáb tem à la carte; domingo vai só até lanches (18h).
+  function restPhase(wd, min) {
+    const fases = (wd === 0)
+      ? [[360,690,'Café da manhã'],[690,810,'Almoço'],[810,1080,'Lanches']]
+      : [[360,690,'Café da manhã'],[690,810,'Almoço'],[810,1080,'Lanches'],[1080,1350,'À la carte'],[1350,1410,'Aberto · cozinha fechada']];
+    const f = fases.find(([a, b]) => min >= a && min < b);
+    return f ? f[2] : null;
+  }
 
   function nowBSB() {
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
@@ -194,16 +201,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   }
   const isOpen = (hor, wd, min) => (hor[wd] || []).some(([a, b]) => min >= a && min < b);
 
+  function paint(chip, open, text) {
+    if (!chip) return;
+    chip.classList.remove('is-open', 'is-closed');
+    chip.classList.add(open ? 'is-open' : 'is-closed');
+    chip.querySelector('.status-chip__txt').textContent = text;
+  }
+
   function update() {
     const { wd, min } = nowBSB();
-    Object.values(H).forEach(u => {
-      const chip = document.getElementById(u.el);
-      if (!chip) return;
+    Object.values(UNITS).forEach(u => {
       const open = isOpen(u.hor, wd, min);
-      chip.classList.remove('is-open', 'is-closed');
-      chip.classList.add(open ? 'is-open' : 'is-closed');
-      chip.querySelector('.status-chip__txt').textContent = open ? u.aberto : u.fechado;
+      paint(document.getElementById(u.el), open, open ? u.on : u.off);
     });
+    const fase = restPhase(wd, min);
+    paint(document.getElementById('st-rest'), !!fase, fase || 'Restaurante fechado');
     panel.classList.add('is-ready');
   }
   update();

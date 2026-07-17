@@ -113,6 +113,14 @@
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "Quais são os horários de funcionamento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Posto: todos os dias, das 5h à meia-noite. Restaurante: de segunda a sábado das 6h às 23h30 (cozinha até 22h30) e domingo das 6h às 18h. Ao longo do dia: café da manhã até 11h30, almoço das 11h30 às 13h30, lanches das 13h30 às 18h e à la carte das 18h às 22h30. Ultragaz: entrega de gás todos os dias, das 7h30 às 22h. Murilo Pneus: de segunda a sexta das 8h às 12h e das 13h30 às 18h, e sábado das 8h às 12h."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Quais formas de pagamento vocês aceitam?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -244,7 +252,7 @@
     <div class="hero__status" id="hero-status" role="status" aria-live="polite">
       <span class="status-chip" id="st-posto"><span class="status-chip__dot"></span><span class="status-chip__txt">Posto</span></span>
       <span class="status-chip" id="st-rest"><span class="status-chip__dot"></span><span class="status-chip__txt">Restaurante</span></span>
-      <span class="status-chip" id="st-gas"><span class="status-chip__dot"></span><span class="status-chip__txt">Gás</span></span>
+      <span class="status-chip" id="st-gas"><span class="status-chip__dot"></span><span class="status-chip__txt">Ultragaz</span></span>
       <span class="status-chip" id="st-murilo"><span class="status-chip__dot"></span><span class="status-chip__txt">Murilo Pneus</span></span>
     </div>
     <div class="hero__cta">
@@ -390,6 +398,10 @@
       <div class="sec-label sec-label--center reveal">Perguntas frequentes</div>
       <h3 class="faq__title reveal">Antes de parar,<br /><span class="accent">tire suas dúvidas.</span></h3>
       <div class="faq__list reveal">
+        <details open>
+          <summary class="faq__q">Quais são os horários de funcionamento?</summary>
+          <div class="faq__a">Posto: todos os dias, das 5h à meia-noite. Restaurante: de segunda a sábado das 6h às 23h30 (cozinha até 22h30) e domingo das 6h às 18h. Ao longo do dia: café da manhã até 11h30, almoço das 11h30 às 13h30, lanches das 13h30 às 18h e à la carte das 18h às 22h30. Ultragaz: entrega de gás todos os dias, das 7h30 às 22h. Murilo Pneus: de segunda a sexta das 8h às 12h e das 13h30 às 18h, e sábado das 8h às 12h.</div>
+        </details>
         <details>
           <summary class="faq__q">Quais formas de pagamento vocês aceitam?</summary>
           <div class="faq__a">Aceitamos cartão de crédito e débito das principais bandeiras, cartão Banrisul, Pix e dinheiro.</div>
