@@ -168,29 +168,67 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
-/* ── ABERTO AGORA — status por unidade (fuso America/Sao_Paulo) ── */
+/* ── ABERTO AGORA — status por unidade e faixa de horário (fuso America/Sao_Paulo) ── */
 (function () {
   const panel = document.getElementById('hero-status');
   if (!panel) return;
 
-  // Horários em minutos-do-dia. Índice do dia: 0=domingo … 6=sábado
-  const UNITS = {
-    posto:  { el: 'st-posto',  on: 'Posto aberto',        off: 'Posto fechado',
-              hor: {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]} },
-    gas:    { el: 'st-gas',    on: 'Ultragaz aberto',     off: 'Ultragaz fechado',
-              hor: {0:[[450,1320]],1:[[450,1320]],2:[[450,1320]],3:[[450,1320]],4:[[450,1320]],5:[[450,1320]],6:[[450,1320]]} },
-    murilo: { el: 'st-murilo', on: 'Murilo Pneus aberto', off: 'Murilo Pneus fechado',
-              hor: {1:[[480,720],[810,1080]],2:[[480,720],[810,1080]],3:[[480,720],[810,1080]],4:[[480,720],[810,1080]],5:[[480,720],[810,1080]],6:[[480,720]]} }
+  // seg = [ [iniMin, fimMin, estado, texto], ... ] ; fora das faixas => {closed, textoFechado}
+  // estados: 'open' (verde) | 'soon' (âmbar, última 1h) | 'closed' (vermelho)
+  function seg(min, faixas, txtFechado) {
+    const f = faixas.find(([a, b]) => min >= a && min < b);
+    return f ? { estado: f[2], texto: f[3] } : { estado: 'closed', texto: txtFechado };
+  }
+
+  const SCHED = {
+    posto: (wd, min) => seg(min, [
+      [300, 1380, 'open', 'Posto: aberto'],
+      [1380, 1440, 'soon', 'Posto: fecha à meia-noite']
+    ], 'Posto: abre às 5h'),
+
+    gas: (wd, min) => seg(min, [
+      [450, 1260, 'open', 'Ultragaz: aberto'],
+      [1260, 1320, 'soon', 'Ultragaz: entrega até 22h']
+    ], 'Ultragaz: abre às 7h30'),
+
+    murilo: (wd, min) => {
+      if (wd === 0) return { estado: 'closed', texto: 'Murilo Pneus: abre às 8h' };
+      if (wd === 6) return seg(min, [
+        [480, 660, 'open', 'Murilo Pneus: aberto'],
+        [660, 720, 'soon', 'Murilo Pneus: fecha ao meio-dia']
+      ], 'Murilo Pneus: abre às 8h');
+      return seg(min, [
+        [480, 660, 'open', 'Murilo Pneus: aberto'],
+        [660, 720, 'soon', 'Murilo Pneus: fecha ao meio-dia'],
+        [720, 810, 'closed', 'Murilo Pneus: retorna às 13h30'],
+        [810, 1020, 'open', 'Murilo Pneus: aberto'],
+        [1020, 1080, 'soon', 'Murilo Pneus: fecha às 18h']
+      ], 'Murilo Pneus: abre às 8h');
+    },
+
+    rest: (wd, min) => {
+      if (wd === 0) return seg(min, [
+        [360, 600, 'open', 'Restaurante: servindo café da manhã'],
+        [600, 690, 'open', 'Restaurante: próximo de servir almoço'],
+        [690, 780, 'open', 'Restaurante: servindo almoço'],
+        [780, 810, 'open', 'Restaurante: almoço até 13h30'],
+        [810, 1020, 'open', 'Restaurante: servindo lanches'],
+        [1020, 1080, 'soon', 'Restaurante: atende até 18h']
+      ], 'Restaurante: abre às 6h');
+      return seg(min, [
+        [360, 600, 'open', 'Restaurante: servindo café da manhã'],
+        [600, 690, 'open', 'Restaurante: próximo de servir almoço'],
+        [690, 780, 'open', 'Restaurante: servindo almoço'],
+        [780, 810, 'open', 'Restaurante: almoço até 13h30'],
+        [810, 1080, 'open', 'Restaurante: servindo lanches'],
+        [1080, 1320, 'open', 'Restaurante: servindo janta (à la carte)'],
+        [1320, 1350, 'soon', 'Restaurante: cozinha encerra às 22h30'],
+        [1350, 1410, 'soon', 'Restaurante: atendendo até 23h30']
+      ], 'Restaurante: abre às 6h');
+    }
   };
 
-  // Restaurante: mostra a FASE atual. seg–sáb tem à la carte; domingo vai só até lanches (18h).
-  function restPhase(wd, min) {
-    const fases = (wd === 0)
-      ? [[360,690,'Café da manhã'],[690,810,'Almoço'],[810,1080,'Lanches']]
-      : [[360,690,'Café da manhã'],[690,810,'Almoço'],[810,1080,'Lanches'],[1080,1350,'À la carte'],[1350,1410,'Aberto · cozinha fechada']];
-    const f = fases.find(([a, b]) => min >= a && min < b);
-    return f ? f[2] : null;
-  }
+  const CHIP = { posto: 'st-posto', rest: 'st-rest', gas: 'st-gas', murilo: 'st-murilo' };
 
   function nowBSB() {
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
@@ -199,23 +237,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     let h = parseInt(m.hour, 10); if (h === 24) h = 0;
     return { wd, min: h * 60 + parseInt(m.minute, 10) };
   }
-  const isOpen = (hor, wd, min) => (hor[wd] || []).some(([a, b]) => min >= a && min < b);
-
-  function paint(chip, open, text) {
-    if (!chip) return;
-    chip.classList.remove('is-open', 'is-closed');
-    chip.classList.add(open ? 'is-open' : 'is-closed');
-    chip.querySelector('.status-chip__txt').textContent = text;
-  }
 
   function update() {
     const { wd, min } = nowBSB();
-    Object.values(UNITS).forEach(u => {
-      const open = isOpen(u.hor, wd, min);
-      paint(document.getElementById(u.el), open, open ? u.on : u.off);
+    Object.keys(CHIP).forEach(k => {
+      const chip = document.getElementById(CHIP[k]);
+      if (!chip) return;
+      const { estado, texto } = SCHED[k](wd, min);
+      chip.classList.remove('is-open', 'is-soon', 'is-closed');
+      chip.classList.add(estado === 'open' ? 'is-open' : estado === 'soon' ? 'is-soon' : 'is-closed');
+      chip.querySelector('.status-chip__txt').textContent = texto;
     });
-    const fase = restPhase(wd, min);
-    paint(document.getElementById('st-rest'), !!fase, fase || 'Restaurante fechado');
     panel.classList.add('is-ready');
   }
   update();
