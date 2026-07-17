@@ -115,11 +115,12 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,.97); backdrop-filter: blur(20px);
   z-index: 10000; flex-direction: column;
-  justify-content: center; align-items: center; gap: 44px;
+  justify-content: center; align-items: center; gap: clamp(16px, 3.4vh, 32px);
+  padding: 88px 28px 48px; text-align: center;
   opacity: 0; pointer-events: none; transition: opacity .4s;
 }
 .mobile-menu.open { opacity: 1; pointer-events: all; }
-.mobile-menu a { font-family: var(--fd); font-size: 48px; letter-spacing: .08em; color: var(--w80); text-decoration: none; transition: color .3s; }
+.mobile-menu a { font-family: var(--fd); font-size: clamp(26px, 4.8vh, 40px); line-height: 1.1; letter-spacing: .06em; color: var(--w80); text-decoration: none; transition: color .3s; max-width: 100%; }
 .mobile-menu a:hover { color: var(--orange); }
 
 /* ═══════════════════════════════════════════════════════════

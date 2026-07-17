@@ -57,6 +57,8 @@ function closeMenu() {
   }, 400);
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+// Fecha o menu ao tocar em área vazia (fora dos links)
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) closeMenu(); });
 
 /* ── HERO PARALLAX ── */
 const heroContent = document.querySelector('.hero__content');
@@ -179,7 +181,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
               hor: {0:[[360,1080]],1:[[360,1410]],2:[[360,1410]],3:[[360,1410]],4:[[360,1410]],5:[[360,1410]],6:[[360,1410]]} },
     gas:    { el: 'st-gas',    aberto: 'Gás entregando',     fechado: 'Gás encerrado',
               hor: {0:[[450,1320]],1:[[450,1320]],2:[[450,1320]],3:[[450,1320]],4:[[450,1320]],5:[[450,1320]],6:[[450,1320]]} },
-    murilo: { el: 'st-murilo', aberto: 'Murilo aberto',      fechado: 'Murilo fechado',
+    murilo: { el: 'st-murilo', aberto: 'Murilo Pneus aberta', fechado: 'Murilo Pneus fechada',
               hor: {1:[[480,720],[810,1080]],2:[[480,720],[810,1080]],3:[[480,720],[810,1080]],4:[[480,720],[810,1080]],5:[[480,720],[810,1080]],6:[[480,720]]} }
   };
 
