@@ -166,17 +166,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 })();
 
-/* ── ABERTO AGORA — status ao vivo (fuso America/Sao_Paulo) ── */
+/* ── ABERTO AGORA — status por unidade (fuso America/Sao_Paulo) ── */
 (function () {
-  const heroEl = document.getElementById('hero-status');
-  const navEl  = document.getElementById('nav-status');
-  if (!heroEl && !navEl) return;
-  const heroTxt = document.getElementById('hero-status-text');
-  const navTxt  = document.getElementById('nav-status-text');
+  const panel = document.getElementById('hero-status');
+  if (!panel) return;
 
   // Horários em minutos-do-dia. Índice do dia: 0=domingo … 6=sábado
-  const POSTO = {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]};
-  const REST  = {0:[[360,1080]],1:[[360,1410]],2:[[360,1410]],3:[[360,1410]],4:[[360,1410]],5:[[360,1410]],6:[[360,1410]]};
+  const H = {
+    posto:  { el: 'st-posto',  aberto: 'Posto aberto',       fechado: 'Posto fechado',
+              hor: {0:[[300,1440]],1:[[300,1440]],2:[[300,1440]],3:[[300,1440]],4:[[300,1440]],5:[[300,1440]],6:[[300,1440]]} },
+    rest:   { el: 'st-rest',   aberto: 'Restaurante aberto', fechado: 'Restaurante fechado',
+              hor: {0:[[360,1080]],1:[[360,1410]],2:[[360,1410]],3:[[360,1410]],4:[[360,1410]],5:[[360,1410]],6:[[360,1410]]} },
+    gas:    { el: 'st-gas',    aberto: 'Gás entregando',     fechado: 'Gás encerrado',
+              hor: {0:[[450,1320]],1:[[450,1320]],2:[[450,1320]],3:[[450,1320]],4:[[450,1320]],5:[[450,1320]],6:[[450,1320]]} },
+    murilo: { el: 'st-murilo', aberto: 'Murilo aberto',      fechado: 'Murilo fechado',
+              hor: {1:[[480,720],[810,1080]],2:[[480,720],[810,1080]],3:[[480,720],[810,1080]],4:[[480,720],[810,1080]],5:[[480,720],[810,1080]],6:[[480,720]]} }
+  };
 
   function nowBSB() {
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Sao_Paulo', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
@@ -185,33 +190,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     let h = parseInt(m.hour, 10); if (h === 24) h = 0;
     return { wd, min: h * 60 + parseInt(m.minute, 10) };
   }
-  const isOpen = (s, wd, min) => (s[wd] || []).some(([a, b]) => min >= a && min < b);
-  const next   = (s, wd, min) => (s[wd] || []).find(([a]) => a > min);
-  const fmt = (min) => { const h = Math.floor(min / 60) % 24, m = min % 60; return m ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`; };
-
-  function setState(el, open) {
-    if (!el) return;
-    el.classList.remove('is-open', 'is-closed');
-    el.classList.add(open ? 'is-open' : 'is-closed', 'is-ready');
-  }
+  const isOpen = (hor, wd, min) => (hor[wd] || []).some(([a, b]) => min >= a && min < b);
 
   function update() {
     const { wd, min } = nowBSB();
-    const postoOpen = isOpen(POSTO, wd, min);
-    const restOpen  = isOpen(REST, wd, min);
-    setState(heroEl, postoOpen);
-    setState(navEl, postoOpen);
-
-    if (postoOpen) {
-      let detalhe;
-      if (restOpen) detalhe = 'Restaurante aberto';
-      else { const prox = next(REST, wd, min); detalhe = prox ? `Restaurante abre às ${fmt(prox[0])}` : 'Restaurante fechado por hoje'; }
-      if (heroTxt) heroTxt.innerHTML = `<b>Aberto agora</b> · ${detalhe}`;
-      if (navTxt)  navTxt.textContent = 'Aberto';
-    } else {
-      if (heroTxt) heroTxt.innerHTML = `<b>Fechado agora</b> · Posto abre às 5h`;
-      if (navTxt)  navTxt.textContent = 'Fechado';
-    }
+    Object.values(H).forEach(u => {
+      const chip = document.getElementById(u.el);
+      if (!chip) return;
+      const open = isOpen(u.hor, wd, min);
+      chip.classList.remove('is-open', 'is-closed');
+      chip.classList.add(open ? 'is-open' : 'is-closed');
+      chip.querySelector('.status-chip__txt').textContent = open ? u.aberto : u.fechado;
+    });
+    panel.classList.add('is-ready');
   }
   update();
   setInterval(update, 60000);
