@@ -192,18 +192,24 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     ], 'Ultragaz: abre às 7h30'),
 
     murilo: (wd, min) => {
-      if (wd === 0) return { estado: 'closed', texto: 'Murilo Pneus: abre às 8h' };
+      // Mensagem de fechado conforme o dia/horário (domingo não abre)
+      const fechado = () => {
+        if (wd >= 1 && wd <= 6 && min < 480) return 'Murilo Pneus: abre às 8h';      // antes de abrir hoje
+        if (wd === 0 || wd === 6) return 'Murilo Pneus: abre segunda às 8h';          // domingo, ou sáb após 12h
+        return 'Murilo Pneus: abre amanhã às 8h';                                     // seg–sex após 18h
+      };
+      if (wd === 0) return { estado: 'closed', texto: fechado() };
       if (wd === 6) return seg(min, [
         [480, 660, 'open', 'Murilo Pneus: aberto'],
         [660, 720, 'soon', 'Murilo Pneus: fecha ao meio-dia']
-      ], 'Murilo Pneus: abre às 8h');
+      ], fechado());
       return seg(min, [
         [480, 660, 'open', 'Murilo Pneus: aberto'],
         [660, 720, 'soon', 'Murilo Pneus: fecha ao meio-dia'],
         [720, 810, 'closed', 'Murilo Pneus: retorna às 13h30'],
         [810, 1020, 'open', 'Murilo Pneus: aberto'],
         [1020, 1080, 'soon', 'Murilo Pneus: fecha às 18h']
-      ], 'Murilo Pneus: abre às 8h');
+      ], fechado());
     },
 
     rest: (wd, min) => {
