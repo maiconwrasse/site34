@@ -264,6 +264,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 /* ── CARROSSEL (serviços + avaliações): autoplay, arrasto, setas, dica ── */
 (function () {
   document.querySelectorAll('.js-carousel').forEach(setup);
+  window.__c34Carousel = setup;   // usado pelo módulo do blog
 
   function arrow(dir) {
     const b = document.createElement('button');
@@ -349,4 +350,81 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     // impede que o arrasto do mouse dispare clique (ex.: abrir WhatsApp)
     track.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
   }
+})();
+
+/* ── BLOG: chamadas na home (.js-blog-track) e listagem completa (.js-post-grid) ── */
+(function () {
+  const track = document.querySelector('.js-blog-track');
+  const grid  = document.querySelector('.js-post-grid');
+  if (!track && !grid) return;
+
+  const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+  function dataBR(iso) {
+    const p = String(iso || '').split('-');
+    if (p.length !== 3) return '';
+    return parseInt(p[2], 10) + ' ' + MESES[parseInt(p[1], 10) - 1] + ' ' + p[0];
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function card(p, eager) {
+    return '<a class="post-card" href="' + esc(p.url) + '">' +
+      '<div class="post-card__img-wrap">' +
+        '<img src="' + esc(p.imagem) + '" alt="' + esc(p.alt || p.titulo) + '" ' +
+             'width="800" height="450" decoding="async" ' +
+             'loading="' + (eager ? 'eager' : 'lazy') + '" ' +
+             'onerror="this.style.display=\'none\'" />' +
+        '<div class="post-card__img-ov"></div>' +
+      '</div>' +
+      '<div class="post-card__body">' +
+        '<div class="post-card__meta">' +
+          '<span class="post-card__tag">' + esc(p.categoria) + '</span>' +
+          '<span class="post-card__date">' + dataBR(p.data) + '</span>' +
+        '</div>' +
+        '<h3 class="post-card__title">' + esc(p.titulo) + '</h3>' +
+        '<p class="post-card__desc">' + esc(p.descricao) + '</p>' +
+        '<span class="post-card__more">Ler matéria</span>' +
+      '</div>' +
+    '</a>';
+  }
+
+  function esconderSecao() {
+    const sec = document.getElementById('blog');
+    if (sec) sec.style.display = 'none';
+  }
+
+  fetch('/posts.json', { cache: 'no-cache' })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(dados => {
+      const posts = (dados.posts || [])
+        .filter(p => p && p.titulo && p.url)
+        .sort((a, b) => String(b.data).localeCompare(String(a.data)));
+
+      if (track) {
+        const limite = parseInt(track.dataset.limit || '6', 10);
+        const lista = posts.slice(0, limite);
+        if (!lista.length) { esconderSecao(); }
+        else {
+          track.innerHTML = lista.map((p, i) => card(p, i < 2)).join('');
+          track.classList.add('js-carousel');
+          if (typeof window.__c34Carousel === 'function') window.__c34Carousel(track);
+        }
+      }
+
+      if (grid) {
+        grid.innerHTML = posts.length
+          ? posts.map((p, i) => card(p, i < 3)).join('')
+          : '<p class="blogpage__note">Nenhuma matéria publicada ainda.</p>';
+      }
+    })
+    .catch(err => {
+      console.warn('[Complexo 34] posts.json não carregou:', err.message);
+      esconderSecao();
+      if (grid) grid.innerHTML = '<p class="blogpage__note">Não foi possível carregar as matérias agora.</p>';
+    });
 })();

@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "slug": "checklist-do-carro-antes-de-pegar-a-estrada",
+      "url": "/blog/checklist-do-carro-antes-de-pegar-a-estrada/",
+      "titulo": "Checklist do carro antes de pegar a estrada",
+      "descricao": "Pneus, fluidos, freios, luzes e bateria: dez minutos de conferência que evitam parada no meio da BR-386.",
+      "categoria": "Dicas de estrada",
+      "data": "2026-07-23",
+      "imagem": "/blog/checklist-do-carro-antes-de-pegar-a-estrada/capa.webp",
+      "alt": "Mecânico da Murilo Pneus inspecionando o freio de um carro suspenso no elevador, no Complexo 34"
+    },
+    {
+      "slug": "conheca-o-restaurante-do-complexo-34",
+      "url": "/blog/conheca-o-restaurante-do-complexo-34/",
+      "titulo": "Conheça o Restaurante do Complexo 34",
+      "descricao": "Buffet à vontade no almoço, café da manhã, lanches e janta à la carte. Como funciona cada fase do dia no restaurante.",
+      "categoria": "Restaurante",
+      "data": "2026-07-23",
+      "imagem": "/blog/conheca-o-restaurante-do-complexo-34/capa.webp",
+      "alt": "Buffet do Restaurante Complexo 34 com travessas de massas, carnes e acompanhamentos"
+    },
+    {
+      "slug": "restaurante-na-br-386-em-frederico-westphalen",
+      "url": "/blog/restaurante-na-br-386-em-frederico-westphalen/",
+      "titulo": "Restaurante na BR-386: onde parar para comer em Frederico Westphalen",
+      "descricao": "Pátio para carretas, chuveiro, banheiro e comida caseira no KM 34. O que quem está de passagem encontra ao parar.",
+      "categoria": "Na estrada",
+      "data": "2026-07-23",
+      "imagem": "/blog/restaurante-na-br-386-em-frederico-westphalen/capa.webp",
+      "alt": "Frentista abastecendo caminhonete no Posto Ipiranga do Complexo 34, com o restaurante ao fundo"
+    },
+    {
+      "slug": "gasolina-com-32-por-cento-de-etanol-em-agosto",
+      "url": "/blog/gasolina-com-32-por-cento-de-etanol-em-agosto/",
+      "titulo": "Gasolina passa a ter 32% de etanol em 1º de agosto",
+      "descricao": "O CNPE aprovou a mistura E32, em vigor a partir de 1º de agosto. O que muda no preço, no motor e no abastecimento.",
+      "categoria": "Combustíveis",
+      "data": "2026-07-22",
+      "imagem": "/blog/gasolina-com-32-por-cento-de-etanol-em-agosto/capa.webp",
+      "alt": "Frentista abastecendo carro na pista do Posto Ipiranga do Complexo 34, na BR-386"
+    },
+    {
+      "slug": "combustiveis-e-servicos-do-posto-ipiranga",
+      "url": "/blog/combustiveis-e-servicos-do-posto-ipiranga/",
+      "titulo": "Combustíveis e serviços do Posto Ipiranga do Complexo 34",
+      "descricao": "Gasolina Original, Ipimax e Ipimax Pro, diesel comum e S10, Arla 32 e troca de óleo. Aberto todos os dias das 5h à meia-noite.",
+      "categoria": "Posto",
+      "data": "2026-07-21",
+      "imagem": "/blog/combustiveis-e-servicos-do-posto-ipiranga/capa.webp",
+      "alt": "Bomba de combustível do Posto Ipiranga do Complexo 34 com banner da gasolina Ipimax"
+    },
+    {
+      "slug": "gas-ultragaz-no-complexo-34",
+      "url": "/blog/gas-ultragaz-no-complexo-34/",
+      "titulo": "Gás Ultragaz no Complexo 34: botijões, entrega e promoção na retirada",
+      "descricao": "Botijões P13, P20 e P45, entrega em toda a área urbana de Frederico Westphalen e preço promocional para quem retira no local.",
+      "categoria": "Ultragaz",
+      "data": "2026-07-20",
+      "imagem": "/blog/gas-ultragaz-no-complexo-34/capa.webp",
+      "alt": "Equipe da revenda Ultragaz do Complexo 34 ao lado dos botijões de gás"
+    }
+  ]
+}

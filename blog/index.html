@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Notícias e dicas | Complexo 34</title>
+  <meta name="description" content="Notícias do Complexo 34 e dicas úteis para quem roda na BR-386: viagem, manutenção do carro, gás de cozinha, restaurante e serviços em Frederico Westphalen/RS." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Complexo 34" />
+  <link rel="canonical" href="https://complexo34.com.br/blog/" />
+  <meta name="theme-color" content="#050505" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Complexo 34" />
+  <meta property="og:title" content="Blog — Notícias e dicas | Complexo 34" />
+  <meta property="og:description" content="Novidades da casa e informações úteis para quem roda na BR-386." />
+  <meta property="og:url" content="https://complexo34.com.br/blog/" />
+  <meta property="og:image" content="https://complexo34.com.br/restaurante_34.JPG" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/logo_34.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6EQVEW7GG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K6EQVEW7GG');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog do Complexo 34",
+    "description": "Notícias do Complexo 34 e dicas para quem roda na BR-386.",
+    "url": "https://complexo34.com.br/blog/",
+    "inLanguage": "pt-BR",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Complexo 34",
+      "url": "https://complexo34.com.br/",
+      "logo": "https://complexo34.com.br/logo_complexo_34.svg"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav class="navbar scrolled" id="navbar">
+  <a href="/" class="navbar__logo" aria-label="Complexo 34">
+    <img src="/logo_complexo_34.svg" alt="Complexo 34" />
+  </a>
+  <ul class="navbar__links">
+    <li><a href="/#inicio">Início</a></li>
+    <li><a href="/#sobre">Sobre</a></li>
+    <li><a href="/#servicos">Serviços</a></li>
+    <li><a href="/#levi">Lé-Vi</a></li>
+    <li><a href="/#como-chegar">Como Chegar</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#inicio"   onclick="closeMenu()">Início</a>
+  <a href="/#sobre"    onclick="closeMenu()">Sobre</a>
+  <a href="/#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="/#levi"     onclick="closeMenu()">Lé-Vi</a>
+  <a href="/#como-chegar" onclick="closeMenu()">Como Chegar</a>
+  <a href="/#faq"        onclick="closeMenu()">Perguntas frequentes</a>
+  <a href="/blog/"      onclick="closeMenu()">Blog</a>
+  <a href="/#contato"  onclick="closeMenu()">Contato</a>
+</div>
+
+<!-- ═══════════════════════════════ LISTAGEM ═══════════════════════════════ -->
+<section class="blogpage">
+  <div class="blogpage__ambient"></div>
+  <div class="container">
+
+    <div class="blogpage__head">
+      <div class="sec-label sec-label--center sec-label--orange">Blog</div>
+      <h1 class="blogpage__title">Notícias e dicas</h1>
+      <p class="blogpage__sub">Novidades da casa e informações úteis para quem roda na BR-386</p>
+    </div>
+
+    <div class="post-grid js-post-grid">
+      <p class="blogpage__note">Carregando matérias…</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ RODAPÉ ═══════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container footer__grid">
+
+      <div class="footer__brand">
+        <img src="/logo_complexo_34.svg" alt="Complexo 34" class="footer__logo" />
+        <p class="footer__tagline">Um complexo de possibilidades<br />Frederico Westphalen/RS</p>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Navegação</div>
+        <a href="/#inicio">Início</a>
+        <a href="/#sobre">Sobre</a>
+        <a href="/#servicos">Serviços</a>
+        <a href="/#levi">Lé-Vi</a>
+        <a href="/#contato">Contato</a>
+        <a href="/#como-chegar">Como Chegar</a>
+        <a href="/blog/">Blog</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Serviços</div>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." target="_blank" rel="noopener">Restaurante</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." target="_blank" rel="noopener">Posto Ipiranga</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." target="_blank" rel="noopener">Gás Ultragaz</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." target="_blank" rel="noopener">Murilo Pneus</a>
+        <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">Lé-Vi Comidas</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Contato</div>
+        <a href="https://wa.me/5555996910733" target="_blank" rel="noopener">(55) 99691-0733</a>
+        <a href="tel:+555537447404">Ligar (55) 3744-7404</a>
+        <span>Frederico Westphalen/RS</span>
+        <span>Seja bem-vindo!</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>© 2025 Complexo 34. Todos os direitos reservados.</span>
+      <span class="footer__credits">Desenvolvido por: Maicon Wrasse</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
