@@ -330,21 +330,35 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     ['pointerdown', 'wheel', 'touchstart'].forEach(ev => track.addEventListener(ev, used, { once: true, passive: true }));
 
     // arrasto com mouse (toque usa o scroll nativo)
-    let down = false, sx = 0, sl = 0, moved = false;
+    let down = false, sx = 0, sl = 0, moved = false, capturado = false;
     track.addEventListener('pointerdown', e => {
       nudge();
       if (e.pointerType === 'touch') return;
-      down = true; moved = false; sx = e.clientX; sl = track.scrollLeft;
-      track.classList.add('is-dragging');
-      try { track.setPointerCapture(e.pointerId); } catch (_) {}
+      down = true; moved = false; capturado = false;
+      sx = e.clientX; sl = track.scrollLeft;
+      // NAO entra em modo arrasto aqui: se entrar, o clique simples
+      // nunca chega no link do card (is-dragging zera o pointer-events)
     });
     track.addEventListener('pointermove', e => {
       if (!down) return;
       const dx = e.clientX - sx;
-      if (Math.abs(dx) > 3) moved = true;
+      if (!moved) {
+        if (Math.abs(dx) <= 4) return;   // limiar: abaixo disso ainda e clique
+        moved = true;
+        track.classList.add('is-dragging');
+        try { track.setPointerCapture(e.pointerId); capturado = true; } catch (_) {}
+      }
       track.scrollLeft = sl - dx;
     });
-    function endDrag() { if (!down) return; down = false; track.classList.remove('is-dragging'); }
+    function endDrag(e) {
+      if (!down) return;
+      down = false;
+      track.classList.remove('is-dragging');
+      if (capturado) {
+        try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+        capturado = false;
+      }
+    }
     track.addEventListener('pointerup', endDrag);
     track.addEventListener('pointercancel', endDrag);
     // impede que o arrasto do mouse dispare clique (ex.: abrir WhatsApp)
@@ -376,7 +390,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     return '<a class="post-card" href="' + esc(p.url) + '">' +
       '<div class="post-card__img-wrap">' +
         '<img src="' + esc(p.imagem) + '" alt="' + esc(p.alt || p.titulo) + '" ' +
-             'width="800" height="450" decoding="async" ' +
+             'width="800" height="450" decoding="async" draggable="false" ' +
              'loading="' + (eager ? 'eager' : 'lazy') + '" ' +
              'onerror="this.style.display=\'none\'" />' +
         '<div class="post-card__img-ov"></div>' +
