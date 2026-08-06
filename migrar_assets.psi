@@ -1,0 +1,70 @@
+# ============================================================
+#  migrar_assets.ps1  -  Reorganizacao de assets do Complexo 34
+#  Reescreve os caminhos de imagem/logo/video em index.html e
+#  em blog/**/index.html para a nova estrutura:
+#      assets/img/   assets/logo/   assets/video/
+#  NAO mexe em: favicon.ico, favicon.png, style.css, script.js, capa.webp
+#  Idempotente: rodar de novo nao faz nada (pula paginas ja migradas)
+#  Uso: colocar na RAIZ do projeto e rodar:  .\migrar_assets.ps1
+# ============================================================
+
+$ErrorActionPreference = "Stop"
+
+# nome do arquivo -> subpasta de destino em assets/
+$mapa = [ordered]@{
+  "logo_complexo_34.svg"    = "logo"
+  "logo_34.svg"             = "logo"
+  "logo_levi.svg"           = "logo"
+  "restaurante_34.JPG"      = "img"
+  "posto_34.JPG"            = "img"
+  "gas_34.JPG"              = "img"
+  "murilo_34.JPG"           = "img"
+  "gas-site.png"            = "img"
+  "LeVi_ComidaSaudavel.png" = "img"
+  "pop-up-site.svg"         = "img"
+  "C34_video_hero.mp4"      = "video"
+}
+
+# paginas alvo: home + indice do blog + todas as materias
+$arquivos = @()
+if (Test-Path "index.html") { $arquivos += (Resolve-Path "index.html").Path }
+if (Test-Path "blog") {
+  $arquivos += Get-ChildItem -Path "blog" -Recurse -Filter "index.html" | ForEach-Object { $_.FullName }
+}
+
+if ($arquivos.Count -eq 0) {
+  Write-Host "Nenhum index.html encontrado. Rode este script na RAIZ do projeto."
+  exit
+}
+
+# UTF-8 SEM BOM (preserva o conteudo e as quebras de linha CRLF)
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+$total = 0
+
+Write-Host "Paginas encontradas: $($arquivos.Count)"
+foreach ($f in $arquivos) {
+  $txt = [System.IO.File]::ReadAllText($f, $utf8)
+
+  if ($txt.Contains("assets/logo/") -or $txt.Contains("assets/img/") -or $txt.Contains("assets/video/")) {
+    Write-Host "  =  $f  (ja migrado, pulado)"
+    continue
+  }
+
+  $n = 0
+  foreach ($nome in $mapa.Keys) {
+    $sub  = $mapa[$nome]
+    $novo = "assets/$sub/$nome"
+    $ocorr = ([regex]::Matches($txt, [regex]::Escape($nome))).Count
+    if ($ocorr -gt 0) {
+      $txt = $txt.Replace($nome, $novo)
+      $n  += $ocorr
+    }
+  }
+
+  [System.IO.File]::WriteAllText($f, $txt, $utf8)
+  Write-Host "  OK $f  ($n caminhos atualizados)"
+  $total += $n
+}
+
+Write-Host ""
+Write-Host "Concluido. $total referencias reescritas."
