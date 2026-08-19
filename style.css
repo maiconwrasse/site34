@@ -313,6 +313,12 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .wa-card__cta--pulse { animation: pulseCard 2.8s ease-in-out infinite; }
 .wa-card:hover .wa-card__cta--pulse { animation: none; }
 
+/* Card de acesso rapido com duas acoes (Restaurante: WhatsApp + pagina) */
+.wa-card--dual { cursor: default; }
+.wa-card__ctas { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.wa-card__cta { text-decoration: none; cursor: pointer; }
+.wa-card__cta--page svg { stroke: currentColor; fill: none; }
+
 /* ═══════════════════════════════════════════════════════════
    SOBRE
 ═══════════════════════════════════════════════════════════ */
@@ -403,6 +409,12 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 }
 .srv-block__btn--pulse { animation: pulseWA 2.6s ease-in-out infinite; }
 .srv-block__btn--pulse:hover { animation: none; }
+
+/* Bloco de servico com duas acoes (Restaurante: pagina + WhatsApp) */
+.srv-block__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.srv-block__btn--primary { background: rgba(65,121,196,.22); border-color: rgba(65,121,196,.45); }
+.srv-block__btn--primary:hover { border-color: rgba(65,121,196,.75); box-shadow: 0 8px 32px rgba(65,121,196,.30); }
+.srv-block__btn .srv-arrow { width: 15px; height: 15px; flex-shrink: 0; }
 
 .wa-icon { width: 17px; height: 17px; flex-shrink: 0; }
 
