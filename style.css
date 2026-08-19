@@ -637,7 +637,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 ═══════════════════════════════════════════════════════════ */
 .oferta {
   position: relative;
-  padding: 130px 0 120px;
+  padding: 78px 0 70px;
   background: #fff7f1;
   overflow: hidden;
 }
@@ -651,7 +651,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .oferta__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
   align-items: center;
 }
 
@@ -662,6 +662,8 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   border-radius: 6px;
   overflow: hidden;
   aspect-ratio: 4/5;
+  max-height: 460px;
+  margin: 0 auto;
   box-shadow: 0 32px 80px rgba(200,90,20,.22);
 }
 .oferta__img-wrap img {
@@ -680,20 +682,20 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 
 .oferta__title {
   font-family: var(--fd);
-  font-size: clamp(52px,6.5vw,92px);
-  line-height: .90; letter-spacing: .02em;
+  font-size: clamp(38px,4.4vw,62px);
+  line-height: .92; letter-spacing: .02em;
   color: #1a0d05;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .oferta__desc {
   font-family: var(--fu); font-size: 15px; font-weight: 300;
-  line-height: 1.78; color: rgba(26,13,5,.66);
-  margin-bottom: 32px; max-width: 440px;
+  line-height: 1.7; color: rgba(26,13,5,.66);
+  margin-bottom: 22px; max-width: 440px;
 }
 .oferta__features {
   list-style: none;
-  margin-bottom: 44px;
-  display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 30px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 26px;
 }
 .oferta__features li {
   font-family: var(--fu); font-size: 14px; font-weight: 400;
@@ -816,7 +818,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 
 .levi {
   position: relative;
-  padding: 130px 0 120px;
+  padding: 78px 0 70px;
   background: var(--black-95);
   overflow: hidden;
 }
@@ -835,7 +837,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .levi__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
   align-items: center;
 }
 
@@ -849,20 +851,20 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 
 .levi__title {
   font-family: var(--fd);
-  font-size: clamp(44px,5.5vw,80px);
-  line-height: .90; letter-spacing: .02em;
+  font-size: clamp(34px,4vw,54px);
+  line-height: .95; letter-spacing: .02em;
   color: var(--white);
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 .levi__desc {
   font-family: var(--fu); font-size: 15px; font-weight: 300;
-  line-height: 1.78; color: var(--w80);
-  margin-bottom: 28px; max-width: 440px;
+  line-height: 1.7; color: var(--w80);
+  margin-bottom: 22px; max-width: 440px;
 }
 .levi__features {
   list-style: none;
-  margin-bottom: 44px;
-  display: flex; flex-direction: column; gap: 11px;
+  margin-bottom: 30px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 26px;
 }
 .levi__features li {
   font-family: var(--fu); font-size: 14px; font-weight: 400;
@@ -893,9 +895,13 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   position: relative;
   border-radius: 6px;
   overflow: hidden;
+  max-width: 460px;
+  margin: 0 auto;
 }
 .levi__img-wrap img {
-  width: 100%; height: auto;
+  width: auto; height: auto;
+  max-width: 100%; max-height: 400px;
+  margin: 0 auto;
   display: block;
   transition: transform 1s cubic-bezier(.4,0,.2,1);
   border-radius: 6px;
@@ -973,12 +979,14 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
   .srv-block, .srv-block--reverse { grid-template-columns: 1fr; direction: ltr; }
   .srv-block__img-wrap { aspect-ratio: 16/9; }
   .srv-block__body { padding: 36px 32px; }
-  .oferta__inner { grid-template-columns: 1fr; gap: 48px; }
+  .oferta__inner { grid-template-columns: 1fr; gap: 36px; }
   .reviews__grid { grid-template-columns: repeat(2, 1fr); }
-  .oferta__img-wrap { aspect-ratio: 4/5; max-width: 360px; margin: 0 auto; }
+  .oferta__img-wrap { aspect-ratio: 4/5; max-width: 300px; max-height: 380px; margin: 0 auto; }
   .popup { max-width: 380px; }
-  .levi__inner { grid-template-columns: 1fr; gap: 48px; }
+  .levi__inner { grid-template-columns: 1fr; gap: 36px; }
+  .oferta__features, .levi__features { grid-template-columns: 1fr; }
   .levi__img-col { order: -1; }
+  .levi__img-wrap img { max-height: 240px; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .footer__brand { grid-column: 1 / -1; }
 }
@@ -994,6 +1002,7 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   .sobre, .servicos, .contato, .links-rapidos, .oferta, .levi, .reviews { padding: 90px 0; }
+  .oferta, .levi { padding: 54px 0 48px; }
   .sobre__sub  { margin-bottom: 48px; }
   .reviews__grid { grid-template-columns: 1fr; }
   .reviews__summary { gap: 22px; }
