@@ -154,8 +154,9 @@
   });
 
   function cfg() {
-    if (window.innerWidth < 700) return { rot: 25, g1: 0.58, g2: 1.0, max: 1 };
-    return { rot: 40, g1: 0.64, g2: 1.12, max: 2 };
+    if (window.innerWidth < 700)
+      return { rot: 24, g1: 0.6, g2: 1.05, max: 1, s0: 1.08, s1: 0.74, s2: 0.6 };
+    return { rot: 40, g1: 0.72, g2: 1.24, max: 2, s0: 1.16, s1: 0.8, s2: 0.64 };
   }
 
   function layout() {
@@ -169,10 +170,10 @@
       s.classList.toggle('is-active', o === 0);
       s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
       s.tabIndex = o === 0 ? 0 : -1;
-      if (o === 0) { t = 'translate(-50%,-50%) scale(1)'; op = 1; z = 10; }
-      else if (a === 1) { t = 'translate(-50%,-50%) translateX(' + (o * c.g1 * W) + 'px) rotateY(' + (-o * c.rot) + 'deg) scale(.86)'; op = .82; z = 6; }
-      else if (a === 2 && c.max >= 2) { t = 'translate(-50%,-50%) translateX(' + (o * c.g2 * W) + 'px) rotateY(' + (-o * c.rot) + 'deg) scale(.7)'; op = .38; z = 4; }
-      else { t = 'translate(-50%,-50%) translateX(' + ((o > 0 ? 1 : -1) * (c.g2 + .25) * W) + 'px) scale(.6)'; op = 0; z = 1; }
+      if (o === 0) { t = 'translate(-50%,-50%) scale(' + c.s0 + ')'; op = 1; z = 10; }
+      else if (a === 1) { t = 'translate(-50%,-50%) translateX(' + (o * c.g1 * W) + 'px) rotateY(' + (-o * c.rot) + 'deg) scale(' + c.s1 + ')'; op = .74; z = 6; }
+      else if (a === 2 && c.max >= 2) { t = 'translate(-50%,-50%) translateX(' + (o * c.g2 * W) + 'px) rotateY(' + (-o * c.rot) + 'deg) scale(' + c.s2 + ')'; op = .32; z = 4; }
+      else { t = 'translate(-50%,-50%) translateX(' + ((o > 0 ? 1 : -1) * (c.g2 + .25) * W) + 'px) scale(.55)'; op = 0; z = 1; }
       s.style.transform = t; s.style.opacity = op; s.style.zIndex = z;
     });
   }
