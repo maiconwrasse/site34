@@ -398,3 +398,68 @@ body { background: var(--r-ink); }
 .rmenu__full .rmenu__cat:first-of-type { margin-top: 26px; }
 @media (prefers-reduced-motion: reduce) { .rmenu__full { transition: opacity .2s ease; } }
 @media (max-width: 620px) { .rmenu__actions .rbtn { width: 100%; } }
+
+/* ═══════════════════════════════════════════════════════════
+   GALERIA — carrossel 3D (coverflow) com auto-play + lightbox
+═══════════════════════════════════════════════════════════ */
+.rgal { background: var(--r-ink); padding: clamp(64px, 8vw, 110px) 20px; overflow: hidden; }
+.rgal__wrap { max-width: 1120px; margin: 0 auto; }
+.rgal__head { text-align: center; margin-bottom: clamp(36px, 5vw, 60px); }
+.rgal__eyebrow {
+  font-family: var(--r-fu); font-size: 11px; font-weight: 600;
+  letter-spacing: .34em; text-transform: uppercase; color: var(--r-orange-2); margin: 0 0 14px;
+}
+.rgal__title { font-family: var(--r-fd); font-weight: 600; font-size: clamp(38px, 7vw, 68px); line-height: 1; margin: 0; color: var(--r-cream); }
+
+.rgal__viewport { position: relative; }
+.rgal__stage { position: relative; height: clamp(230px, 42vw, 400px); perspective: 1500px; }
+.rgal__slide {
+  position: absolute; top: 50%; left: 50%; width: clamp(230px, 40vw, 380px); aspect-ratio: 3 / 2;
+  margin: 0; padding: 0; border: 0; border-radius: 14px; overflow: hidden; background: var(--r-ember); cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform .85s cubic-bezier(.22,.61,.36,1), opacity .7s ease, box-shadow .6s ease;
+  will-change: transform, opacity;
+}
+.rgal__slide img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; }
+.rgal__slide.is-active { box-shadow: 0 30px 60px -20px rgba(0,0,0,.85), 0 0 0 1px var(--r-orange-glow); }
+.rgal__zoom {
+  position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(5,5,5,.55); color: var(--r-cream);
+  opacity: 0; transform: scale(.9); transition: opacity .3s ease, transform .3s ease, background .2s ease; pointer-events: none;
+}
+.rgal__slide.is-active .rgal__zoom { opacity: 1; transform: scale(1); }
+.rgal__slide.is-active:hover .rgal__zoom { background: var(--r-orange); color: #0a0500; }
+.rgal__zoom svg { width: 16px; height: 16px; }
+
+.rgal__arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; z-index: 20;
+  display: grid; place-items: center; background: rgba(5,5,5,.5); border: 1px solid var(--r-line); color: var(--r-cream);
+  cursor: pointer; transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.rgal__arrow:hover { background: var(--r-orange); border-color: var(--r-orange); color: #0a0500; }
+.rgal__arrow:focus-visible { outline: 2px solid var(--r-orange-2); outline-offset: 3px; }
+.rgal__arrow svg { width: 22px; height: 22px; }
+.rgal__arrow--prev { left: 0; }
+.rgal__arrow--next { right: 0; }
+
+.rgal__lb {
+  position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center;
+  background: rgba(3,3,3,.94); padding: clamp(16px, 4vw, 48px);
+}
+.rgal__lb.is-open { display: flex; }
+.rgal__lb-stage { position: relative; max-width: 1200px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.rgal__lb-img { max-width: 100%; max-height: 80vh; border-radius: 10px; object-fit: contain; box-shadow: 0 40px 80px -30px rgba(0,0,0,.9); }
+.rgal__lb-count { font-family: var(--r-fu); font-size: 13px; color: var(--r-cream-70); font-variant-numeric: tabular-nums; }
+.rgal__lb-btn {
+  position: absolute; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(244,237,228,.1); border: 0; color: var(--r-cream); cursor: pointer; transition: background .2s ease, color .2s ease;
+}
+.rgal__lb-btn:hover { background: var(--r-orange); color: #0a0500; }
+.rgal__lb-btn:focus-visible { outline: 2px solid var(--r-orange-2); outline-offset: 3px; }
+.rgal__lb-btn svg { width: 24px; height: 24px; }
+.rgal__lb-prev { top: 50%; left: -8px; transform: translateY(-50%); }
+.rgal__lb-next { top: 50%; right: -8px; transform: translateY(-50%); }
+.rgal__lb-close { top: -6px; right: -6px; width: 44px; height: 44px; }
+
+@media (max-width: 700px) { .rgal__arrow { display: none; } .rgal__lb-prev { left: 4px; } .rgal__lb-next { right: 4px; } }
+@media (prefers-reduced-motion: reduce) { .rgal__slide { transition: opacity .3s ease; } }

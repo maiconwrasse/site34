@@ -590,6 +590,42 @@
       </div>
     </section>
 
+    <!-- ═══════════════════════════════ GALERIA ═══════════════════════════════ -->
+    <section class="rgal" id="galeria">
+      <div class="rgal__wrap">
+        <header class="rgal__head">
+          <p class="rgal__eyebrow">Conheça o espaço</p>
+          <h2 class="rgal__title">Galeria</h2>
+        </header>
+        <div class="rgal__viewport">
+          <button class="rgal__arrow rgal__arrow--prev" id="rgalPrev" type="button" aria-label="Foto anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+          </button>
+          <div class="rgal__stage" id="rgalStage" aria-roledescription="carrossel" aria-label="Fotos do Complexo 34"></div>
+          <button class="rgal__arrow rgal__arrow--next" id="rgalNext" type="button" aria-label="Próxima foto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox da galeria -->
+    <div class="rgal__lb" id="rgalLb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+      <div class="rgal__lb-stage">
+        <button class="rgal__lb-btn rgal__lb-close" id="rgalLbClose" type="button" aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+        <button class="rgal__lb-btn rgal__lb-prev" id="rgalLbPrev" type="button" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <img class="rgal__lb-img" id="rgalLbImg" src="" alt="" />
+        <button class="rgal__lb-btn rgal__lb-next" id="rgalLbNext" type="button" aria-label="Próxima foto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
+        <span class="rgal__lb-count" id="rgalLbCount"></span>
+      </div>
+    </div>
+
     <!-- ═══════════════════════════════ RODAPÉ ═══════════════════════════════ -->
     <footer class="footer">
         <div class="footer__top">
