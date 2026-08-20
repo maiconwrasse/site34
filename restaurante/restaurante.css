@@ -602,13 +602,12 @@ body { background: var(--r-ink); }
 }
 .rrev__lane {
   display: flex; gap: 18px; width: max-content; padding: 4px 0;
-  will-change: transform;
+  will-change: transform; user-select: none; -webkit-user-select: none;
+  touch-action: pan-y; cursor: grab;
 }
-.rrev__lane--a { animation: rrev-scroll-a 46s linear infinite; }
-.rrev__lane--b { animation: rrev-scroll-b 54s linear infinite; margin-top: 18px; }
-.rrev__marquee:hover .rrev__lane { animation-play-state: paused; }
-@keyframes rrev-scroll-a { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes rrev-scroll-b { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.rrev__lane--b { margin-top: 18px; }
+.rrev__marquee { cursor: grab; }
+.rrev__marquee.is-dragging { cursor: grabbing; }
 
 /* card de depoimento */
 .rrev__card {
