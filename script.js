@@ -54,7 +54,7 @@ function closeMenu() {
   document.body.style.overflow = '';
   setTimeout(() => {
     if (!mobileMenu.classList.contains('open')) mobileMenu.style.display = 'none';
-  }, 400);
+  }, 500);
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 // Fecha o menu ao tocar em área vazia (fora dos links)
