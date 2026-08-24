@@ -133,6 +133,26 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* ── MENU MOBILE: seção ativa (scroll-spy) ── */
+(() => {
+  const links = Array.from(document.querySelectorAll('.mobile-menu__nav a[href^="#"]'));
+  if (!links.length) return;
+  const map = new Map();
+  links.forEach(a => {
+    const sec = document.getElementById(a.getAttribute('href').slice(1));
+    if (sec) map.set(sec, a);
+  });
+  if (!map.size) return;
+  const setActive = a => {
+    links.forEach(l => l.classList.remove('is-active'));
+    if (a) a.classList.add('is-active');
+  };
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setActive(map.get(e.target)); });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  map.forEach((_, sec) => spy.observe(sec));
+})();
+
 /* ── POP-UP DIA DOS NAMORADOS ── */
 (function () {
   const overlay  = document.getElementById('popup-overlay');

@@ -158,9 +158,9 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 }
 .mobile-menu__nav a:hover .mm-label,
 .mobile-menu__nav a:active .mm-label { color: var(--white); }
-.mobile-menu__nav a.is-featured .mm-idx { color: var(--orange); }
-.mobile-menu__nav a.is-featured .mm-label { color: var(--white); }
-.mobile-menu__nav a.is-featured::before {
+.mobile-menu__nav a.is-active .mm-idx { color: var(--orange); }
+.mobile-menu__nav a.is-active .mm-label { color: var(--white); }
+.mobile-menu__nav a.is-active::before {
   content: ''; position: absolute; left: -24px; top: 50%;
   transform: translateY(-50%); width: 3px; height: 26px;
   background: var(--orange); border-radius: 0 2px 2px 0;
