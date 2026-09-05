@@ -7,7 +7,7 @@
   <meta name="description" content="Complexo 34, na BR-386 KM 34 em Frederico Westphalen/RS: restaurante com buffet caseiro, Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis. Pare, abasteça e coma bem." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Complexo 34" />
-  <link rel="canonical" href="https://complexo34.com.br/" />
+  <link rel="canonical" href="https://www.complexo34.com.br/" />
   <meta name="theme-color" content="#050505" />
 
   <!-- Open Graph / redes sociais -->
@@ -15,15 +15,15 @@
   <meta property="og:site_name" content="Complexo 34" />
   <meta property="og:title" content="Complexo 34 - Um complexo de possibilidades na BR-386" />
   <meta property="og:description" content="Restaurante, Posto Ipiranga, Ultragaz, Murilo Pneus e Lé-Vi Comidas Saudáveis em Frederico Westphalen/RS." />
-  <meta property="og:url" content="https://complexo34.com.br/" />
-  <meta property="og:image" content="https://complexo34.com.br/assets/img/restaurante_34.JPG" />
+  <meta property="og:url" content="https://www.complexo34.com.br/" />
+  <meta property="og:image" content="https://www.complexo34.com.br/assets/img/restaurante_34.JPG" />
   <meta property="og:locale" content="pt_BR" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Complexo 34 - Um complexo de possibilidades na BR-386" />
   <meta name="twitter:description" content="Restaurante, Posto Ipiranga, Ultragaz, Murilo Pneus e Lé-Vi em Frederico Westphalen/RS." />
-  <meta name="twitter:image" content="https://complexo34.com.br/assets/img/restaurante_34.JPG" />
+  <meta name="twitter:image" content="https://www.complexo34.com.br/assets/img/restaurante_34.JPG" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="assets/logo/logo_34.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.png" />
@@ -35,67 +35,68 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-K6EQVEW7GG');
+    gtag('config', 'AW-17949652662');
+  </script>
+
+  <!-- Conversoes Google Ads - cliques de WhatsApp e telefone -->
+  <script>
+    // Dispara a conversao e deixa o clique seguir normalmente:
+    // WhatsApp abre em nova aba (target="_blank") e o tel: abre o discador.
+    // O try/catch garante que, se o gtag falhar (bloqueador/rede), o link
+    // ainda funcione - o botao nunca trava.
+    function gtagReportConversion(sendTo) {
+      try {
+        gtag('event', 'conversion', {
+          'send_to': sendTo,
+          'value': 1.0,
+          'currency': 'BRL'
+        });
+      } catch (e) {}
+      return true;
+    }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Dados estruturados (Google) -->
+  <!-- Dados estruturados (Google) - a home é a entidade LocalBusiness do complexo.
+       A entidade Restaurant vive em /restaurante/ e é referenciada aqui por @id. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
+    "@type": "LocalBusiness",
+    "@id": "https://www.complexo34.com.br/#complexo34",
     "name": "Complexo 34",
-    "alternateName": "Complexo 34 - Restaurante",
-    "description": "Restaurante com buffet caseiro na BR-386 KM 34, em Frederico Westphalen/RS. Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis no mesmo complexo.",
-    "image": "https://complexo34.com.br/assets/img/restaurante_34.JPG",
-    "url": "https://complexo34.com.br/",
+    "description": "Complexo de serviços na BR-386 KM 34, em Frederico Westphalen/RS: restaurante com buffet caseiro, Posto Ipiranga, revenda Ultragaz, Murilo Pneus Auto Center e Lé-Vi Comidas Saudáveis.",
+    "image": "https://www.complexo34.com.br/assets/img/restaurante_34.JPG",
+    "url": "https://www.complexo34.com.br/",
     "telephone": "+555537447404",
     "priceRange": "R$$",
-    "servesCuisine": "Brasileira",
+    "currenciesAccepted": "BRL",
+    "paymentAccepted": "Dinheiro, Pix, Cartão de crédito, Cartão de débito, Cartão Banrisul",
+    "sameAs": [
+      "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw"
+    ],
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.6",
-      "reviewCount": "976"
+      "reviewCount": "988"
     },
     "openingHoursSpecification": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "06:00",
-        "closes": "23:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "06:00",
-        "closes": "18:00"
-      }
-    ],
-    "department": {
-      "@type": "GasStation",
-      "name": "Posto Complexo 34 — Ipiranga",
-      "telephone": "+555537447404",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "BR-386, KM 34",
-        "addressLocality": "Frederico Westphalen",
-        "addressRegion": "RS",
-        "addressCountry": "BR"
-      },
-      "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "05:00",
         "closes": "00:00"
       }
-    },
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "BR-386, KM 34",
       "addressLocality": "Frederico Westphalen",
       "addressRegion": "RS",
+      "postalCode": "98400-000",
       "addressCountry": "BR"
     },
     "geo": {
@@ -103,7 +104,91 @@
       "latitude": -27.3645413,
       "longitude": -53.3929737
     },
-    "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw"
+    "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ3cuXthSd-5QRcTqlnT--hNw",
+    "department": [
+      {
+        "@type": "Restaurant",
+        "@id": "https://www.complexo34.com.br/restaurante/#restaurant",
+        "name": "Restaurante Complexo 34",
+        "url": "https://www.complexo34.com.br/restaurante/"
+      },
+      {
+        "@type": "GasStation",
+        "@id": "https://www.complexo34.com.br/#posto",
+        "name": "Posto Complexo 34 - Ipiranga",
+        "url": "https://www.complexo34.com.br/#servicos",
+        "telephone": "+555537447404",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "BR-386, KM 34",
+          "addressLocality": "Frederico Westphalen",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "05:00",
+          "closes": "00:00"
+        }
+      },
+      {
+        "@type": "Store",
+        "@id": "https://www.complexo34.com.br/#ultragaz",
+        "name": "Ultragaz Complexo 34",
+        "description": "Revenda autorizada Ultragaz: botijões P13, P20 e P45, com entrega em toda a área urbana de Frederico Westphalen.",
+        "url": "https://www.complexo34.com.br/#oferta-gas",
+        "telephone": "+5555996910733",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "BR-386, KM 34",
+          "addressLocality": "Frederico Westphalen",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "07:30",
+          "closes": "22:00"
+        }
+      },
+      {
+        "@type": "AutoRepair",
+        "@id": "https://www.complexo34.com.br/#murilopneus",
+        "name": "Murilo Pneus Auto Center",
+        "description": "Venda e troca de pneus, baterias, borracharia, balanceamento, geometria, revisões e manutenção mecânica.",
+        "url": "https://www.complexo34.com.br/#servicos",
+        "telephone": "+5555996910733",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "BR-386, KM 34",
+          "addressLocality": "Frederico Westphalen",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "12:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "13:30",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "08:00",
+            "closes": "12:00"
+          }
+        ]
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -241,11 +326,11 @@
   </nav>
 
   <div class="mobile-menu__foot">
-    <a class="mobile-menu__cta" href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Complexo%2034." target="_blank" rel="noopener" onclick="closeMenu()">
+    <a class="mobile-menu__cta" href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Complexo%2034." target="_blank" rel="noopener" onclick="closeMenu(); return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
       Chamar no WhatsApp
     </a>
-    <a class="mobile-menu__phone" href="tel:+555537447404">
+    <a class="mobile-menu__phone" href="tel:+555537447404" onclick="return gtagReportConversion('AW-17949652662/xjM7CPD5o-4cELbth-9C')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h-3A1.5 1.5 0 002 4.5C2 13.06 8.94 20 17.5 20A1.5 1.5 0 0019 18.5v-3a1 1 0 00-.76-.97l-3.2-.8a1 1 0 00-1 .34l-.86 1.05a13 13 0 01-4.6-4.6l1.05-.86a1 1 0 00.34-1l-.8-3.2A1 1 0 006.5 3z"/></svg>
       (55) 3744-7404
     </a>
@@ -269,9 +354,9 @@
 
   <div class="hero__content">
     <p class="hero__label">Bem-vindo ao</p>
-    <div class="hero__logo-wrap">
-      <img src="assets/logo/logo_complexo_34.svg" alt="Complexo 34" class="hero__logo" />
-    </div>
+    <h1 class="hero__logo-wrap">
+      <img src="assets/logo/logo_complexo_34.svg" alt="Complexo 34 &mdash; restaurante, posto Ipiranga, Ultragaz e Murilo Pneus na BR-386 KM 34, Frederico Westphalen/RS" class="hero__logo" />
+    </h1>
     <div class="hero__divider"></div>
     <p class="hero__subtitle">Um complexo de possibilidades.</p>
     <p class="hero__tagline">Restaurante&nbsp;·&nbsp;Posto&nbsp;·&nbsp;Conveniência&nbsp;·&nbsp;BR-386&nbsp;KM&nbsp;34</p>
@@ -311,7 +396,7 @@
         <div class="wa-card__label">Restaurante</div>
         <div class="wa-card__sub">Café, almoço e janta</div>
         <div class="wa-card__ctas">
-          <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
+          <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
              target="_blank" rel="noopener" class="wa-card__cta">
             <svg class="wa-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
             WhatsApp
@@ -323,7 +408,7 @@
         </div>
       </div>
 
-      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034."
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
          target="_blank" rel="noopener"
          class="wa-card wa-card--orange reveal" data-delay="1">
         <div class="wa-card__glow"></div>
@@ -341,7 +426,7 @@
         </div>
       </a>
 
-      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás."
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
          target="_blank" rel="noopener"
          class="wa-card wa-card--orange reveal" data-delay="2">
         <div class="wa-card__glow"></div>
@@ -360,7 +445,7 @@
         </div>
       </a>
 
-      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus."
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
          target="_blank" rel="noopener"
          class="wa-card wa-card--blue reveal" data-delay="3">
         <div class="wa-card__glow"></div>
@@ -485,7 +570,7 @@
         </details>
       </div>
       <div class="faq__cta-wrap reveal">
-        <a href="https://wa.me/5555996910733?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Complexo%2034." target="_blank" rel="noopener" class="faq__cta">
+        <a href="https://wa.me/5555996910733?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener" class="faq__cta">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           Fale conosco no WhatsApp
         </a>
@@ -546,7 +631,7 @@
         <li>📍 &nbsp;Postos Complexo 34 e Rótula Central</li>
         <li>⏳ &nbsp;Oferta por tempo limitado</li>
       </ul>
-      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20do%20Gás%20P13%20Ultragaz%20por%20R$%20104,90."
+      <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20do%20Gás%20P13%20Ultragaz%20por%20R$%20104,90." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
          target="_blank" rel="noopener"
          class="oferta__btn reveal">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
@@ -646,7 +731,7 @@
             Ver o restaurante
             <svg class="srv-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034."
+          <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
              target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
             <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
             Falar no WhatsApp
@@ -665,7 +750,7 @@
         <div class="srv-block__tag srv-block__tag--orange">Combustíveis · Ipiranga</div>
         <h3 class="srv-block__name">Posto Complexo 34</h3>
         <p class="srv-block__desc">Gasolina Comum · Ipimax · Ipimax PRO · Diesel S10 · Troca de Óleo</p>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034."
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
            target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           Falar no WhatsApp
@@ -683,7 +768,7 @@
         <div class="srv-block__tag srv-block__tag--orange">Distribuidora · Ultragaz</div>
         <h3 class="srv-block__name">Gás Ultragaz</h3>
         <p class="srv-block__desc">P13 Residencial · P20 Comercial · P45 Industrial</p>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás."
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
            target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--orange srv-block__btn--pulse">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           Pedir Gás agora
@@ -701,7 +786,7 @@
         <div class="srv-block__tag srv-block__tag--blue">Auto Center</div>
         <h3 class="srv-block__name">Murilo Pneus</h3>
         <p class="srv-block__desc">Auto Center completo para seu veículo</p>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus."
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')"
            target="_blank" rel="noopener" class="srv-block__btn srv-block__btn--blue">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           Falar no WhatsApp
@@ -835,11 +920,11 @@
     <p class="contato__sub reveal">Complexo 34 · Frederico Westphalen/RS</p>
 
     <div class="contato__links reveal">
-      <a href="https://wa.me/5555996910733" target="_blank" rel="noopener" class="contato__wa">
+      <a href="https://wa.me/5555996910733" onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener" class="contato__wa">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
         (55) 99691-0733
       </a>
-      <a href="tel:+555537447404" class="contato__tel">
+      <a href="tel:+555537447404" onclick="return gtagReportConversion('AW-17949652662/xjM7CPD5o-4cELbth-9C')" class="contato__tel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Ligar (55) 3744-7404
       </a>
@@ -878,20 +963,20 @@
 
       <div class="footer__col">
         <div class="footer__col-title">Serviços</div>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." target="_blank" rel="noopener">Restaurante</a>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." target="_blank" rel="noopener">Posto Ipiranga</a>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." target="_blank" rel="noopener">Gás Ultragaz</a>
-        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." target="_blank" rel="noopener">Murilo Pneus</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Restaurante%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener">Restaurante</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20o%20Posto%20Complexo%2034." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener">Posto Ipiranga</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20pedir%20um%20botijão%20de%20gás." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener">Gás Ultragaz</a>
+        <a href="https://wa.me/5555996910733?text=Olá!%20Gostaria%20de%20informações%20sobre%20a%20Murilo%20Pneus." onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener">Murilo Pneus</a>
         <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">Lé-Vi Comidas</a>
       </div>
 
       <div class="footer__col">
         <div class="footer__col-title">Contato</div>
-        <a href="https://wa.me/5555996910733" target="_blank" rel="noopener">
+        <a href="https://wa.me/5555996910733" onclick="return gtagReportConversion('AW-17949652662/XOmiCO35o-4cELbth-9C')" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-1px;margin-right:5px;fill:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.533 5.845L.057 23.927l6.235-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.367l-.359-.214-3.7.971.988-3.614-.234-.371A9.818 9.818 0 1112 21.818z"/></svg>
           (55) 99691-0733
         </a>
-        <a href="tel:+555537447404">Ligar (55) 3744-7404</a>
+        <a href="tel:+555537447404" onclick="return gtagReportConversion('AW-17949652662/xjM7CPD5o-4cELbth-9C')">Ligar (55) 3744-7404</a>
         <a href="https://levi-pronto-8kwn.vercel.app/" target="_blank" rel="noopener">levicomidassaudaveis.com.br</a>
         <span>Frederico Westphalen/RS</span>
         <span>Seja bem-vindo!</span>
