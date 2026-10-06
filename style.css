@@ -731,14 +731,12 @@ body { font-family: var(--fu); background: var(--black); color: var(--white); ov
 .oferta {
   position: relative;
   padding: 78px 0 70px;
-  background: #fff7f1;
+  background: #F9DDCB;
   overflow: hidden;
 }
 .oferta__ambient {
   position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(249,100,11,.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 15% 90%, rgba(249,100,11,.12) 0%, transparent 50%);
+  background: none;
   pointer-events: none;
 }
 .oferta__inner {
