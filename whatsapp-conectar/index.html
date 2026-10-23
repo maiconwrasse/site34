@@ -72,7 +72,23 @@
     } catch (e) { /* mensagens que não são do cadastro */ }
   });
 
+  // Variação do cadastro, escolhida por ?v= na URL (padrão: v5).
+  //   v5  -> coexistência ligada por padrão
+  //   v4  -> featureType explícito, sem versão
+  //   v3  -> formato antigo com featureType e sessionInfoVersion 3
+  var VARIANTE = new URLSearchParams(location.search).get("v") || "v5";
+  function extrasDaVersao() {
+    if (VARIANTE === "v4") {
+      return { setup: {}, featureType: "whatsapp_business_app_onboarding", sessionInfoVersion: "3" };
+    }
+    if (VARIANTE === "v3") {
+      return { setup: {}, featureType: "whatsapp_business_app_onboarding", sessionInfoVersion: "3", version: "v3" };
+    }
+    return { version: "v5", features: [{ name: "whatsapp_business_app_onboarding", enabled: true }] };
+  }
+
   window.fbAsyncInit = function () {
+    mostrar("Variação do cadastro: " + VARIANTE + " | configuração: " + CONFIG_ID);
     FB.init({ appId: APP_ID, autoLogAppEvents: true, xfbml: false, version: GRAPH_VERSION });
     btn.disabled = false;
     btn.textContent = "Conectar WhatsApp da empresa";
@@ -91,7 +107,7 @@
       config_id: CONFIG_ID,
       response_type: "code",
       override_default_response_type: true,
-      extras: { version: "v5" }
+      extras: extrasDaVersao()
     });
   });
 </script>
