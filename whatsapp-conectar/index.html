@@ -44,7 +44,9 @@
 
 <script>
   var APP_ID = "2907833592948543";
-  var CONFIG_ID = "3187422698315678";
+  // Configuração "Coexistencia Complexo 34" (com produto WhatsApp Cloud API).
+  // Para testar outra configuração sem novo deploy: ?config=ID na URL.
+  var CONFIG_ID = new URLSearchParams(location.search).get("config") || "2316082102571186";
   var GRAPH_VERSION = "v25.0";
   var saida = document.getElementById("status");
   var btn = document.getElementById("btn");
