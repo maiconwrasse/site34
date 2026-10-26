@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel do WhatsApp | Complexo 34</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #050505;
+    --cartao: #111110;
+    --linha: #262624;
+    --texto: #f2f1ee;
+    --texto-2: #b9b7b1;
+    --texto-3: #85837d;
+    --gas: #F9640B;
+    --rest: #4179C4;
+    --neutro: #6b6a66;
+    --erro: #ff8a7a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font: 400 15px/1.5 "Barlow", system-ui, sans-serif;
+  }
+  .pagina { max-width: 1120px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1, h2 { font-family: "Bebas Neue", "Barlow", sans-serif; font-weight: 400; letter-spacing: .02em; margin: 0; }
+  h1 { font-size: 40px; line-height: 1; }
+  h2 { font-size: 24px; line-height: 1.1; margin-bottom: 14px; }
+  .sub { color: var(--texto-2); margin: 6px 0 0; }
+  .topo { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .acoes { display: flex; gap: 8px; align-items: center; }
+  .acoes small { color: var(--texto-3); }
+  button, input {
+    font: inherit; color: inherit; background: var(--cartao);
+    border: 1px solid var(--linha); border-radius: 6px; padding: 9px 14px;
+  }
+  button { cursor: pointer; }
+  button:hover { border-color: var(--texto-3); }
+  button.principal { background: var(--texto); color: var(--fundo); border-color: var(--texto); font-weight: 600; }
+  section { margin-top: 40px; }
+  .grade { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .cartao { background: var(--cartao); border: 1px solid var(--linha); border-radius: 8px; padding: 18px; min-width: 0; }
+  .rotulo { color: var(--texto-2); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+  .numero { font-family: "Bebas Neue", sans-serif; font-size: 44px; line-height: 1; margin: 8px 0 6px; }
+  .detalhe { color: var(--texto-2); font-size: 14px; }
+  .detalhe .ponto { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 1px 0; vertical-align: middle; }
+  .nota { color: var(--texto-3); font-size: 13px; margin-top: 10px; }
+  .grafico { position: relative; }
+  .grafico svg { display: block; width: 100%; height: 160px; overflow: visible; }
+  .grafico .eixo { fill: var(--texto-3); font-size: 11px; }
+  .grafico .grade-linha { stroke: var(--linha); stroke-width: 1; }
+  .grafico rect.alvo { fill: transparent; cursor: default; }
+  .dica {
+    position: absolute; pointer-events: none; background: #1d1d1b; border: 1px solid var(--linha);
+    border-radius: 6px; padding: 6px 10px; font-size: 13px; white-space: nowrap; transform: translate(-50%, -110%);
+    display: none;
+  }
+  details { margin-top: 10px; }
+  summary { color: var(--texto-3); font-size: 13px; cursor: pointer; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  th { color: var(--texto-2); font-weight: 500; font-size: 13px; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tabela { overflow-x: auto; border: 1px solid var(--linha); border-radius: 8px; background: var(--cartao); }
+  .tabela td.resumo { color: var(--texto-2); max-width: 360px; white-space: pre-line; }
+  .selo { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--linha); color: var(--texto-2); white-space: nowrap; }
+  .selo.completo { color: var(--texto); border-color: var(--texto-3); }
+  a { color: var(--texto); }
+  td a { white-space: nowrap; }
+  .tabela table { min-width: 720px; }
+  .barra-linha { display: grid; grid-template-columns: 170px 1fr 48px; gap: 12px; align-items: center; padding: 6px 0; }
+  .barra-linha .trilho { height: 10px; background: #1b1b1a; border-radius: 4px; overflow: hidden; }
+  .barra-linha .cheio { height: 100%; background: var(--neutro); border-radius: 0 4px 4px 0; }
+  .barra-linha .valor { text-align: right; font-variant-numeric: tabular-nums; }
+  #entrar { max-width: 380px; margin: 12vh auto 0; }
+  #entrar form { display: flex; gap: 8px; margin-top: 18px; }
+  #entrar input { flex: 1; min-width: 0; }
+  #mensagem { color: var(--erro); min-height: 22px; margin-top: 10px; font-size: 14px; }
+  .oculto { display: none !important; }
+  @media (max-width: 560px) {
+    h1 { font-size: 34px; }
+    .barra-linha { grid-template-columns: 120px 1fr 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <div id="entrar">
+    <h1>Painel do WhatsApp</h1>
+    <p class="sub">Complexo 34. Acesso restrito.</p>
+    <form id="form-senha" autocomplete="off">
+      <input id="senha" type="password" placeholder="Senha" aria-label="Senha" required>
+      <button class="principal" type="submit">Entrar</button>
+    </form>
+    <div id="mensagem" role="alert"></div>
+  </div>
+
+  <div id="painel" class="oculto">
+    <div class="topo">
+      <div>
+        <h1>Painel do WhatsApp</h1>
+        <p class="sub">Pedidos que passaram pelo robô do Complexo 34.</p>
+      </div>
+      <div class="acoes">
+        <small id="atualizado"></small>
+        <button id="btn-atualizar" type="button">Atualizar</button>
+        <button id="btn-sair" type="button">Sair</button>
+      </div>
+    </div>
+
+    <section style="margin-top:0">
+      <div class="grade" id="periodos"></div>
+      <p class="nota">Completo: a IA ou o formulário recebeu todos os dados. Iniciado: o cliente tocou em "Fazer pedido" e seguiu com a equipe. Pedidos feitos direto com a equipe, sem passar pelo robô, não aparecem aqui.</p>
+    </section>
+
+    <section>
+      <h2>Pedidos por dia, últimos 30 dias</h2>
+      <div class="grade" id="graficos"></div>
+    </section>
+
+    <section>
+      <div class="grade">
+        <div class="cartao">
+          <h2>De onde vieram (30 dias)</h2>
+          <div id="origens"></div>
+        </div>
+        <div class="cartao">
+          <h2>Recompra do gás</h2>
+          <div class="grade" id="recompra" style="grid-template-columns: repeat(2, minmax(0, 1fr))"></div>
+          <p class="nota">Lembrete enviado quando o botijão deve estar acabando: 40 dias após o pedido, ou no ritmo de quem já pediu mais de uma vez.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Últimos pedidos</h2>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Quando</th><th>Cliente</th><th>Setor</th><th>Origem</th><th>Situação</th><th>Resumo</th></tr></thead>
+          <tbody id="ultimos"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var API = "https://kzgurwvmmohktgaksnsg.supabase.co/functions/v1/whatsapp-webhook?tarefa=relatorio";
+  var CHAVE_LOCAL = "painel_wa_senha";
+  var SETORES = [
+    { id: "gas", nome: "Gás", cor: "var(--gas)" },
+    { id: "marmita", nome: "Marmitas", cor: "var(--rest)" },
+    { id: "reserva", nome: "Reservas", cor: "var(--rest)" }
+  ];
+  var ORIGENS = { ia: "IA (conversa)", menu: "Menu, com a equipe", formulario: "Formulário", recompra: "Lembrete de recompra" };
+  var NOMES_SETOR = { gas: "Gás", marmita: "Marmita", reserva: "Reserva" };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var senhaAtual = "";
+  var ultimoDado = null;
+  var espera = 0;
+  // Redesenha os gráficos na largura nova (celular girado, janela redimensionada).
+  window.addEventListener("resize", function () {
+    clearTimeout(espera);
+    espera = setTimeout(function () {
+      if (ultimoDado) SETORES.forEach(function (s) { colunas($("g-" + s.id), ultimoDado.por_dia, s); });
+    }, 150);
+  });
+
+  function guardar(v) { try { sessionStorage.setItem(CHAVE_LOCAL, v); } catch (e) {} }
+  function lembrar() { try { return sessionStorage.getItem(CHAVE_LOCAL) || ""; } catch (e) { return ""; } }
+  function esquecer() { try { sessionStorage.removeItem(CHAVE_LOCAL); } catch (e) {} }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmtNum(n) { return Number(n || 0).toLocaleString("pt-BR"); }
+  function fmtDiaCurto(iso) { var p = iso.split("-"); return p[2] + "/" + p[1]; }
+  function fmtQuando(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", timeZone: "America/Sao_Paulo" }) + " " +
+      d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
+  }
+  // 555596657123 -> (55) 99665-7123 e o link do WhatsApp com o nono dígito
+  function telefone(t) {
+    var n = String(t || "").replace(/\D/g, "");
+    if (/^55\d{10}$/.test(n) && /[6-9]/.test(n[4])) n = n.slice(0, 4) + "9" + n.slice(4);
+    var vis = n;
+    var m = n.match(/^55(\d{2})(\d{4,5})(\d{4})$/);
+    if (m) vis = "(" + m[1] + ") " + m[2] + "-" + m[3];
+    return { vis: vis, link: "https://wa.me/" + n };
+  }
+
+  async function carregar(senha) {
+    $("mensagem").textContent = "";
+    var r;
+    try {
+      r = await fetch(API, { method: "POST", body: JSON.stringify({ chave: senha }) });
+    } catch (e) {
+      $("mensagem").textContent = "Não foi possível conectar. Tente de novo.";
+      return false;
+    }
+    if (r.status === 401) {
+      var j = await r.json().catch(function () { return {}; });
+      $("mensagem").textContent = j.erro === "sem_senha_configurada" ? "A senha do painel ainda não foi configurada no Supabase." : "Senha incorreta.";
+      esquecer();
+      return false;
+    }
+    if (!r.ok) { $("mensagem").textContent = "Erro ao carregar (" + r.status + ")."; return false; }
+    var dados = await r.json();
+    senhaAtual = senha;
+    guardar(senha);
+    desenhar(dados);
+    $("entrar").classList.add("oculto");
+    $("painel").classList.remove("oculto");
+    return true;
+  }
+
+  function desenhar(d) {
+    $("atualizado").textContent = "Atualizado " + fmtQuando(d.gerado_em);
+
+    // Períodos
+    var rotulos = { hoje: "Hoje", d7: "Últimos 7 dias", d30: "Últimos 30 dias", d90: "Últimos 90 dias" };
+    $("periodos").innerHTML = Object.keys(rotulos).map(function (k) {
+      var c = d.periodos[k];
+      var total = c.gas + c.marmita + c.reserva;
+      return '<div class="cartao"><div class="rotulo">' + rotulos[k] + '</div>' +
+        '<div class="numero">' + fmtNum(total) + '</div>' +
+        '<div class="detalhe"><span class="ponto" style="background:var(--gas)"></span>Gás ' + fmtNum(c.gas) +
+        ' &nbsp; <span class="ponto" style="background:var(--rest)"></span>Marmitas ' + fmtNum(c.marmita) +
+        ' &nbsp; Reservas ' + fmtNum(c.reserva) + '</div>' +
+        '<div class="detalhe">' + fmtNum(c.completos) + ' completos, ' + fmtNum(c.iniciados) + ' iniciados</div></div>';
+    }).join("");
+
+    // Gráficos por dia (um por setor)
+    $("graficos").innerHTML = SETORES.map(function (s) {
+      var total = d.por_dia.reduce(function (a, x) { return a + x[s.id]; }, 0);
+      return '<div class="cartao"><div class="rotulo">' + s.nome + '</div>' +
+        '<div class="numero" style="font-size:32px">' + fmtNum(total) + '</div>' +
+        '<div class="grafico" id="g-' + s.id + '"></div>' +
+        '<details><summary>Ver em tabela</summary><table><thead><tr><th>Dia</th><th class="num">Pedidos</th></tr></thead><tbody>' +
+        d.por_dia.slice().reverse().filter(function (x) { return x[s.id] > 0; }).map(function (x) {
+          return '<tr><td>' + fmtDiaCurto(x.dia) + '</td><td class="num">' + x[s.id] + '</td></tr>';
+        }).join("") + '</tbody></table></details></div>';
+    }).join("");
+    ultimoDado = d;
+    SETORES.forEach(function (s) { colunas($("g-" + s.id), d.por_dia, s); });
+
+    // Origem
+    var o = d.por_origem_30;
+    var maxO = Math.max(1, o.ia || 0, o.menu || 0, o.formulario || 0, o.recompra || 0);
+    $("origens").innerHTML = Object.keys(ORIGENS).map(function (k) {
+      var v = o[k] || 0;
+      return '<div class="barra-linha"><span>' + ORIGENS[k] + '</span>' +
+        '<div class="trilho"><div class="cheio" style="width:' + (v / maxO * 100) + '%"></div></div>' +
+        '<span class="valor">' + fmtNum(v) + '</span></div>';
+    }).join("");
+
+    // Recompra
+    var rc = d.recompra;
+    var itens = [
+      ["Clientes de gás na base", rc.clientes_gas],
+      ["Lembretes nos próximos 7 dias", rc.proximos_7],
+      ["Lembretes enviados (30 dias)", rc.enviados_30],
+      ["Tocaram em \"Pedir gás\"", rc.clicaram_30],
+      ["Pedidos até 3 dias após o lembrete", rc.pedidos_30],
+      ["Aguardando envio", rc.atrasados]
+    ];
+    $("recompra").innerHTML = itens.map(function (i) {
+      return '<div><div class="rotulo" style="font-size:12px">' + esc(i[0]) + '</div><div class="numero" style="font-size:32px">' + fmtNum(i[1]) + '</div></div>';
+    }).join("");
+
+    // Últimos pedidos
+    $("ultimos").innerHTML = d.ultimos.length ? d.ultimos.map(function (p) {
+      var t = telefone(p.telefone);
+      return '<tr><td style="white-space:nowrap">' + fmtQuando(p.quando) + '</td>' +
+        '<td>' + esc(p.nome || "") + '<br><a href="' + t.link + '" target="_blank" rel="noopener">' + esc(t.vis) + '</a></td>' +
+        '<td>' + esc(NOMES_SETOR[p.setor] || p.setor) + '</td>' +
+        '<td>' + esc(ORIGENS[p.origem] || p.origem) + '</td>' +
+        '<td><span class="selo ' + (p.status === "completo" ? "completo" : "") + '">' + (p.status === "completo" ? "Completo" : "Iniciado") + '</span></td>' +
+        '<td class="resumo">' + esc(p.resumo || "") + '</td></tr>';
+    }).join("") : '<tr><td colspan="6" style="color:var(--texto-3)">Nenhum pedido ainda.</td></tr>';
+  }
+
+  // Colunas simples em SVG, com dica ao passar o mouse (ou tocar).
+  function colunas(el, dias, s) {
+    var W = Math.max(240, Math.round(el.clientWidth || 600)), H = 160, base = 140, topo = 14;
+    var max = Math.max.apply(null, dias.map(function (x) { return x[s.id]; }).concat([1]));
+    var passo = max <= 4 ? 1 : Math.ceil(max / 4);
+    var maxEixo = Math.ceil(max / passo) * passo;
+    var banda = W / dias.length;
+    var larg = Math.min(14, banda - 2);
+    var y = function (v) { return base - (v / maxEixo) * (base - topo); };
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' + s.nome + ' por dia">';
+    for (var v = 0; v <= maxEixo; v += passo) {
+      svg += '<line class="grade-linha" x1="0" x2="' + W + '" y1="' + y(v) + '" y2="' + y(v) + '"/>';
+    }
+    dias.forEach(function (x, i) {
+      var val = x[s.id];
+      var cx = i * banda + banda / 2;
+      if (val > 0) {
+        var yy = y(val), h = base - yy, r = Math.min(4, h);
+        svg += '<path fill="' + s.cor + '" d="M' + (cx - larg / 2) + ',' + base + 'V' + (yy + r) +
+          'Q' + (cx - larg / 2) + ',' + yy + ' ' + (cx - larg / 2 + r) + ',' + yy +
+          'H' + (cx + larg / 2 - r) + 'Q' + (cx + larg / 2) + ',' + yy + ' ' + (cx + larg / 2) + ',' + (yy + r) +
+          'V' + base + 'Z"/>';
+      }
+      svg += '<rect class="alvo" data-i="' + i + '" x="' + (i * banda) + '" y="0" width="' + banda + '" height="' + base + '"/>';
+    });
+    // Datas: primeira, meio e última
+    [0, Math.floor(dias.length / 2), dias.length - 1].forEach(function (i) {
+      var anc = i === 0 ? "start" : i === dias.length - 1 ? "end" : "middle";
+      var xx = i === 0 ? 0 : i === dias.length - 1 ? W : i * banda + banda / 2;
+      svg += '<text class="eixo" x="' + xx + '" y="' + (H - 2) + '" text-anchor="' + anc + '">' + fmtDiaCurto(dias[i].dia) + '</text>';
+    });
+    svg += '<text class="eixo" x="0" y="' + (topo - 4) + '">' + maxEixo + '</text></svg>';
+    el.innerHTML = svg + '<div class="dica"></div>';
+    var dica = el.querySelector(".dica");
+    el.querySelectorAll("rect.alvo").forEach(function (alvo) {
+      var mostrar = function () {
+        var i = Number(alvo.getAttribute("data-i"));
+        var x = dias[i];
+        dica.textContent = fmtDiaCurto(x.dia) + ": " + x[s.id] + (x[s.id] === 1 ? " pedido" : " pedidos");
+        var caixa = el.getBoundingClientRect();
+        var ab = alvo.getBoundingClientRect();
+        dica.style.left = Math.min(Math.max(ab.left - caixa.left + ab.width / 2, 50), caixa.width - 50) + "px";
+        dica.style.top = (y(x[s.id]) / H * caixa.height) + "px";
+        dica.style.display = "block";
+      };
+      alvo.addEventListener("mouseenter", mostrar);
+      alvo.addEventListener("touchstart", mostrar, { passive: true });
+      alvo.addEventListener("mouseleave", function () { dica.style.display = "none"; });
+    });
+  }
+
+  $("form-senha").addEventListener("submit", function (e) {
+    e.preventDefault();
+    carregar($("senha").value.trim());
+  });
+  $("btn-atualizar").addEventListener("click", function () { carregar(senhaAtual); });
+  $("btn-sair").addEventListener("click", function () {
+    esquecer(); senhaAtual = ""; $("senha").value = "";
+    $("painel").classList.add("oculto"); $("entrar").classList.remove("oculto");
+  });
+
+  var salva = lembrar();
+  if (salva) carregar(salva);
+})();
+</script>
+</body>
+</html>
